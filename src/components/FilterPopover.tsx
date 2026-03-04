@@ -43,7 +43,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
         onClick={() => setOpen(!open)}
         className={`p-2 rounded-xl border transition-all duration-150
           ${hasActive
-            ? "border-accent bg-accent-muted text-accent"
+            ? "border-warm-gray-400 bg-warm-gray-100 text-warm-gray-700"
             : "border-warm-gray-200 text-warm-gray-500 hover:bg-warm-gray-100 hover:text-warm-gray-700"
           }`}
         aria-label="Filter"
@@ -88,7 +88,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
                     }}
                     className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors
                       ${local.types.includes(t)
-                        ? "bg-accent text-white"
+                        ? "bg-warm-gray-800 text-white"
                         : "bg-warm-gray-100 text-warm-gray-600 hover:bg-warm-gray-200"
                       }`}
                   >
@@ -104,7 +104,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
               <select
                 value={local.sharedBy}
                 onChange={(e) => setLocal((p) => ({ ...p, sharedBy: e.target.value }))}
-                className="w-full px-3 py-1.5 rounded-xl border border-warm-gray-200 text-sm bg-white text-warm-gray-700 focus:outline-none focus:ring-2 focus:ring-accent/30"
+                className="w-full px-3 py-1.5 rounded-xl border border-warm-gray-200 text-sm bg-white text-warm-gray-700 focus:outline-none focus:ring-2 focus:ring-warm-gray-300"
               >
                 <option value="">All</option>
                 {sharedByOptions.map((s) => (
@@ -123,7 +123,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
                     onClick={() => setLocal((p) => ({ ...p, dateRange: p.dateRange === d ? "" : d }))}
                     className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors
                       ${local.dateRange === d
-                        ? "bg-accent text-white"
+                        ? "bg-warm-gray-800 text-white"
                         : "bg-warm-gray-100 text-warm-gray-600 hover:bg-warm-gray-200"
                       }`}
                   >
@@ -143,7 +143,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
               </button>
               <button
                 onClick={() => { onApply(local); setOpen(false); }}
-                className="flex-1 px-3 py-1.5 rounded-xl bg-accent text-white text-sm font-medium hover:bg-accent/90 transition-colors"
+                className="flex-1 px-3 py-1.5 rounded-xl bg-warm-gray-800 text-white text-sm font-medium hover:bg-warm-gray-700 transition-colors"
               >
                 Apply
               </button>

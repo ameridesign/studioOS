@@ -42,8 +42,8 @@ const supportItems = [
 ];
 
 const appItems = [
-  { label: "Trello", color: "#0079bf" },
-  { label: "Figma", color: "#a259ff" },
+  { label: "Trello", color: "#6b6459" },
+  { label: "Figma", color: "#8a8378" },
 ];
 
 interface SidebarProps {
@@ -67,7 +67,7 @@ export default function Sidebar({ collapsed, mobileOpen, onClose }: SidebarProps
       {/* User Card */}
       <div className={`p-4 ${collapsed ? "px-2" : ""}`}>
         <div className={`flex items-center gap-3 ${collapsed ? "justify-center" : ""}`}>
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center text-white font-semibold text-sm shrink-0">
+          <div className="w-10 h-10 rounded-full bg-warm-gray-300 flex items-center justify-center text-warm-gray-700 font-semibold text-sm shrink-0">
             EE
           </div>
           {!collapsed && (
@@ -112,12 +112,12 @@ export default function Sidebar({ collapsed, mobileOpen, onClose }: SidebarProps
                   key={item.path}
                   to={item.path}
                   onClick={onClose}
-                  className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-150
+                  className={`flex items-center gap-2.5 px-3 py-2 rounded-full text-sm font-medium transition-all duration-150
                     ${isActive(item.path)
-                      ? "bg-accent text-white shadow-sm"
+                      ? "bg-warm-gray-200 text-warm-gray-800"
                       : "text-warm-gray-600 hover:bg-warm-gray-100 hover:text-warm-gray-800"
                     }
-                    ${collapsed ? "justify-center px-2" : ""}
+                    ${collapsed ? "justify-center px-2 rounded-xl" : ""}
                   `}
                   aria-label={item.label}
                 >
@@ -153,12 +153,12 @@ export default function Sidebar({ collapsed, mobileOpen, onClose }: SidebarProps
                     key={project.id}
                     to={`/projects/${project.id}`}
                     onClick={onClose}
-                    className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-150
+                    className={`flex items-center gap-2.5 px-3 py-2 rounded-full text-sm font-medium transition-all duration-150
                       ${isActive(`/projects/${project.id}`)
-                        ? "bg-accent text-white shadow-sm"
+                        ? "bg-warm-gray-200 text-warm-gray-800"
                         : "text-warm-gray-600 hover:bg-warm-gray-100 hover:text-warm-gray-800"
                       }
-                      ${collapsed ? "justify-center px-2" : ""}
+                      ${collapsed ? "justify-center px-2 rounded-xl" : ""}
                     `}
                     aria-label={project.name}
                   >
@@ -212,12 +212,12 @@ export default function Sidebar({ collapsed, mobileOpen, onClose }: SidebarProps
                 key={item.path}
                 to={item.path}
                 onClick={onClose}
-                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-150
+                className={`flex items-center gap-2.5 px-3 py-2 rounded-full text-sm font-medium transition-all duration-150
                   ${isActive(item.path)
-                    ? "bg-accent text-white shadow-sm"
+                    ? "bg-warm-gray-200 text-warm-gray-800"
                     : "text-warm-gray-600 hover:bg-warm-gray-100 hover:text-warm-gray-800"
                   }
-                  ${collapsed ? "justify-center px-2" : ""}
+                  ${collapsed ? "justify-center px-2 rounded-xl" : ""}
                 `}
                 aria-label={item.label}
               >
@@ -239,7 +239,7 @@ export default function Sidebar({ collapsed, mobileOpen, onClose }: SidebarProps
             {appItems.map((app) => (
               <div
                 key={app.label}
-                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-warm-gray-600 hover:bg-warm-gray-100 hover:text-warm-gray-800 transition-all cursor-pointer ${collapsed ? "justify-center px-2" : ""}`}
+                className={`flex items-center gap-2.5 px-3 py-2 rounded-full text-sm font-medium text-warm-gray-600 hover:bg-warm-gray-100 hover:text-warm-gray-800 transition-all cursor-pointer ${collapsed ? "justify-center px-2 rounded-xl" : ""}`}
               >
                 <span className="w-4 h-4 rounded shrink-0" style={{ backgroundColor: app.color }} />
                 {!collapsed && <span>{app.label}</span>}
@@ -255,7 +255,7 @@ export default function Sidebar({ collapsed, mobileOpen, onClose }: SidebarProps
     <>
       {/* Desktop sidebar */}
       <aside
-        className={`hidden lg:flex flex-col fixed left-0 top-0 h-screen bg-white border-r border-warm-gray-200 z-30 transition-all duration-300 ${collapsed ? "w-16" : "w-60"}`}
+        className={`hidden lg:flex flex-col absolute left-0 top-0 h-full bg-white border-r border-warm-gray-200/60 z-30 transition-all duration-300 rounded-l-2xl ${collapsed ? "w-16" : "w-60"}`}
       >
         {sidebarContent}
       </aside>

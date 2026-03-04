@@ -23,7 +23,7 @@ export default function Layout() {
   }, [filters]);
 
   return (
-    <div className="min-h-screen bg-warm-gray-50">
+    <div className="w-full max-w-[1440px] h-[calc(100vh-32px)] bg-warm-gray-50 rounded-2xl shadow-xl overflow-hidden relative">
       <Sidebar
         collapsed={false}
         mobileOpen={sidebarMobileOpen}
@@ -31,7 +31,7 @@ export default function Layout() {
       />
 
       {/* Mobile top bar */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-white border-b border-warm-gray-200 flex items-center justify-between px-4 z-30">
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-white border-b border-warm-gray-200/60 flex items-center justify-between px-4 z-30">
         <button
           onClick={() => setSidebarMobileOpen(true)}
           className="p-2 rounded-xl hover:bg-warm-gray-100 text-warm-gray-600"
@@ -50,7 +50,7 @@ export default function Layout() {
       </div>
 
       {/* Main content */}
-      <main className="lg:ml-60 lg:mr-72 pt-14 lg:pt-0 min-h-screen">
+      <main className="lg:ml-60 lg:mr-72 pt-14 lg:pt-0 h-full overflow-y-auto">
         <Outlet context={{ filters, setFilters }} />
       </main>
 

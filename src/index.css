@@ -12,26 +12,41 @@
   --color-warm-gray-800: #2f2b25;
   --color-warm-gray-900: #1a1714;
 
-  --color-accent: #6366f1;
-  --color-accent-light: #a5b4fc;
-  --color-accent-muted: #eef2ff;
+  --color-accent: #4d473e;
+  --color-accent-light: #8a8378;
+  --color-accent-muted: #f5f3f0;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--color-warm-gray-50);
+  background: #e8e5e0;
   color: var(--color-warm-gray-800);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-warm-gray-400);
   outline-offset: 2px;
   border-radius: 4px;
 }

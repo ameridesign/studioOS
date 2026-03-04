@@ -38,7 +38,7 @@ export default function SettingsPage() {
                 onClick={() => setActive(s.id)}
                 className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-medium transition-all whitespace-nowrap
                   ${active === s.id
-                    ? "bg-accent text-white shadow-sm"
+                    ? "bg-warm-gray-200 text-warm-gray-800"
                     : "text-warm-gray-600 hover:bg-warm-gray-100"
                   }`}
               >
@@ -60,7 +60,7 @@ export default function SettingsPage() {
             <div className="space-y-5">
               <h2 className="font-semibold text-base text-warm-gray-800">Profile</h2>
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center text-white font-bold text-xl">EE</div>
+                <div className="w-16 h-16 rounded-full bg-warm-gray-300 flex items-center justify-center text-warm-gray-700 font-bold text-xl">EE</div>
                 <div>
                   <p className="font-semibold text-warm-gray-800">Emirkan Erkara</p>
                   <p className="text-sm text-warm-gray-500">Independent Product Designer</p>
@@ -91,7 +91,7 @@ export default function SettingsPage() {
               {["Email notifications", "Push notifications", "Weekly digest", "Mention alerts"].map((item) => (
                 <div key={item} className="flex items-center justify-between py-2 border-b border-warm-gray-100">
                   <span className="text-sm text-warm-gray-700">{item}</span>
-                  <div className="w-10 h-6 bg-accent rounded-full relative cursor-pointer">
+                  <div className="w-10 h-6 bg-warm-gray-700 rounded-full relative cursor-pointer">
                     <span className="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-all" />
                   </div>
                 </div>
@@ -118,7 +118,7 @@ export default function SettingsPage() {
                 {["Light", "Dark", "System"].map((theme) => (
                   <button
                     key={theme}
-                    className={`px-4 py-2 rounded-xl border text-sm font-medium transition-colors ${theme === "Light" ? "border-accent bg-accent-muted text-accent" : "border-warm-gray-200 text-warm-gray-600 hover:bg-warm-gray-100"}`}
+                    className={`px-4 py-2 rounded-xl border text-sm font-medium transition-colors ${theme === "Light" ? "border-warm-gray-400 bg-warm-gray-100 text-warm-gray-800" : "border-warm-gray-200 text-warm-gray-600 hover:bg-warm-gray-100"}`}
                   >
                     {theme}
                   </button>

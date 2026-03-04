@@ -73,7 +73,7 @@ export default function CategoryDrawer({ category, onClose }: CategoryDrawerProp
                   {category.recentFiles.map((file) => (
                     <div
                       key={file.id}
-                      className="p-3 rounded-2xl border border-warm-gray-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+                      className="p-3 rounded-xl border border-warm-gray-200/60 hover:shadow-sm transition-all duration-200 cursor-pointer"
                       onClick={() => { onClose(); navigate(`/files/${file.id}`); }}
                     >
                       <p className="font-medium text-sm text-warm-gray-800">{file.filename}</p>

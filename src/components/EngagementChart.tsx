@@ -16,7 +16,7 @@ export default function EngagementChart() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.4 }}
-      className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-5"
+      className="bg-white rounded-xl border border-warm-gray-200/60 p-4"
     >
       <h3 className="font-semibold text-sm text-warm-gray-800 mb-4">
         Documentation Engagement Trend
@@ -40,16 +40,16 @@ export default function EngagementChart() {
               contentStyle={{
                 backgroundColor: "white",
                 border: "1px solid #e8e5e0",
-                borderRadius: 12,
+                borderRadius: 10,
                 fontSize: 12,
-                boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
               }}
             />
             <Line
               type="monotone"
               dataKey="edits"
               stroke="#d6d2cb"
-              strokeWidth={2}
+              strokeWidth={1.5}
               strokeDasharray="4 4"
               dot={false}
               animationDuration={1200}
@@ -57,10 +57,10 @@ export default function EngagementChart() {
             <Line
               type="monotone"
               dataKey="views"
-              stroke="#6366f1"
-              strokeWidth={2.5}
-              dot={{ r: 3, fill: "#6366f1", stroke: "white", strokeWidth: 2 }}
-              activeDot={{ r: 5, fill: "#6366f1", stroke: "white", strokeWidth: 2 }}
+              stroke="#4d473e"
+              strokeWidth={2}
+              dot={{ r: 3, fill: "#dc2626", stroke: "white", strokeWidth: 2 }}
+              activeDot={{ r: 5, fill: "#dc2626", stroke: "white", strokeWidth: 2 }}
               animationDuration={1200}
             />
           </LineChart>
@@ -68,11 +68,12 @@ export default function EngagementChart() {
       </div>
       <div className="flex items-center gap-4 mt-3">
         <div className="flex items-center gap-1.5 text-xs text-warm-gray-600">
-          <span className="w-3 h-0.5 bg-accent rounded-full" />
+          <span className="w-3 h-0.5 bg-warm-gray-800 rounded-full" />
           Views
+          <span className="w-2 h-2 rounded-full bg-red-600 ml-0.5" />
         </div>
         <div className="flex items-center gap-1.5 text-xs text-warm-gray-500">
-          <span className="w-3 h-0.5 bg-warm-gray-300 rounded-full border-dashed" />
+          <span className="w-3 h-0.5 bg-warm-gray-300 rounded-full" style={{ borderTop: "1px dashed #d6d2cb" }} />
           Edits
         </div>
       </div>
