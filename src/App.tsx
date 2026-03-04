@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import DocsPage from "./pages/DocsPage";
 import ProjectPage from "./pages/ProjectPage";
@@ -8,7 +8,7 @@ import SettingsPage from "./pages/SettingsPage";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Navigate to="/docs" replace />} />
@@ -25,7 +25,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/docs" replace />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
