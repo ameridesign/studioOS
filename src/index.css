@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-gray-50: #faf9f7;
+  --color-warm-gray-100: #f5f3f0;
+  --color-warm-gray-200: #e8e5e0;
+  --color-warm-gray-300: #d6d2cb;
+  --color-warm-gray-400: #b0aaa0;
+  --color-warm-gray-500: #8a8378;
+  --color-warm-gray-600: #6b6459;
+  --color-warm-gray-700: #4d473e;
+  --color-warm-gray-800: #2f2b25;
+  --color-warm-gray-900: #1a1714;
+
+  --color-accent: #6366f1;
+  --color-accent-light: #a5b4fc;
+  --color-accent-muted: #eef2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--color-warm-gray-50);
+  color: var(--color-warm-gray-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-gray-300);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-gray-400);
+}
