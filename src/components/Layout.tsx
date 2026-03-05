@@ -1,9 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Menu, PanelRightOpen } from "lucide-react";
+import { PanelRightOpen } from "lucide-react";
 import Sidebar from "./Sidebar";
 import RightRail from "./RightRail";
-import { recentFiles } from "../data/mockData";
+import MobileNav from "./MobileNav";
 import { type FilterState, defaultFilters } from "./FilterPopover";
 
 export default function Layout() {
@@ -11,19 +11,8 @@ export default function Layout() {
   const [railMobileOpen, setRailMobileOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
 
-  const filteredFiles = useMemo(() => {
-    let files = recentFiles;
-    if (filters.types.length > 0) {
-      files = files.filter((f) => filters.types.includes(f.type));
-    }
-    if (filters.sharedBy) {
-      files = files.filter((f) => f.sharedBy === filters.sharedBy);
-    }
-    return files;
-  }, [filters]);
-
   return (
-    <div className="min-h-screen bg-warm-gray-50">
+    <div className="h-screen overflow-hidden bg-warm-gray-50">
       <Sidebar
         collapsed={false}
         mobileOpen={sidebarMobileOpen}
@@ -32,13 +21,6 @@ export default function Layout() {
 
       {/* Mobile top bar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-white border-b border-warm-gray-200 flex items-center justify-between px-4 z-30">
-        <button
-          onClick={() => setSidebarMobileOpen(true)}
-          className="p-2 rounded-xl hover:bg-warm-gray-100 text-warm-gray-600"
-          aria-label="Open sidebar"
-        >
-          <Menu size={20} />
-        </button>
         <span className="font-semibold text-sm text-warm-gray-800">Studio OS</span>
         <button
           onClick={() => setRailMobileOpen(true)}
@@ -49,16 +31,18 @@ export default function Layout() {
         </button>
       </div>
 
-      {/* Main content */}
-      <main className="lg:ml-60 lg:mr-72 pt-14 lg:pt-0 min-h-screen">
+      {/* Main content — full height, internal scroll */}
+      <main className="h-full lg:ml-60 lg:mr-[336px] pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto">
         <Outlet context={{ filters, setFilters }} />
       </main>
 
       <RightRail
-        files={filteredFiles}
         mobileOpen={railMobileOpen}
         onClose={() => setRailMobileOpen(false)}
       />
+
+      {/* Mobile bottom navigation */}
+      <MobileNav onMorePress={() => setSidebarMobileOpen(true)} />
     </div>
   );
 }
