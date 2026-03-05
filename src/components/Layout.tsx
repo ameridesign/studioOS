@@ -32,7 +32,7 @@ export default function Layout() {
       </div>
 
       {/* Main content — full height, internal scroll */}
-      <main className="h-full lg:ml-60 lg:mr-[336px] pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto">
+      <main className="h-full lg:ml-[264px] lg:mr-[336px] pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto">
         <Outlet context={{ filters, setFilters }} />
       </main>
 
