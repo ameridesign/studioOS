@@ -144,8 +144,8 @@ export default function RightRail({ mobileOpen, onClose }: RightRailProps) {
 
   return (
     <>
-      {/* Desktop rail — floating card */}
-      <aside className="hidden lg:block fixed right-4 top-4 bottom-4 w-[320px] bg-white rounded-[20px] border border-warm-gray-200 shadow-sm z-20 overflow-hidden">
+      {/* Desktop rail — full-height panel */}
+      <aside className="hidden lg:block fixed right-0 top-0 h-screen w-[320px] bg-white border-l border-[#E8E8E6] z-20 overflow-hidden">
         {railContent}
       </aside>
 
