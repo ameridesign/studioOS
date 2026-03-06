@@ -12,7 +12,7 @@ export default function Layout() {
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
 
   return (
-    <div className="h-screen overflow-hidden bg-warm-gray-50">
+    <div className="w-full h-full overflow-hidden" style={{ background: '#F6F6F4' }}>
       <Sidebar
         collapsed={false}
         mobileOpen={sidebarMobileOpen}

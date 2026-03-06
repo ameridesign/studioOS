@@ -19,21 +19,19 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html, body {
+html, body, #root {
+  width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-#root {
-  height: 100%;
-}
-
 body {
-  margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--color-warm-gray-50);
+  background: #F6F6F4;
   color: var(--color-warm-gray-800);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
