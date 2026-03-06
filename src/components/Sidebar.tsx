@@ -18,7 +18,6 @@ import {
   MoreHorizontal,
   ArrowLeftRight,
   X,
-  Shield,
   LayoutGrid,
   PenTool,
 } from "lucide-react";
@@ -37,10 +36,10 @@ const essentialItems = [
 ];
 
 const sidebarProjects = [
-  { id: "atlas-crm-revamp", name: "Atlas CRM Revamp", color: "#34A853" },
-  { id: "nimbus-dashboard", name: "Nimbus Dashboard", color: "#F59E0B" },
-  { id: "orion-api-gateway", name: "Orion API Gateway", color: "#4285F4" },
-  { id: "helio-task-system", name: "Helio Task System", color: "#EA4335" },
+  { id: "atlas-crm", name: "Atlas CRM", color: "#1a1a1a" },
+  { id: "studioos-v2", name: "Studio OS v2", color: "#F59E0B" },
+  { id: "mobile-app", name: "Mobile App", color: "#10b981" },
+  { id: "website-redesign", name: "Website Redesign", color: "#ec4899" },
 ];
 
 const supportItems = [
@@ -73,15 +72,15 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
     <div className="flex flex-col h-full p-3" style={{ fontFamily: SIDEBAR_FONT }}>
       {/* User Card */}
       <div className="bg-white border border-[#E8E8E6] rounded-[15px] px-[11px] py-[10px] mb-3 flex items-center gap-[10px]">
-        <div className="w-7 h-7 rounded-full bg-[#E8E8E6] flex items-center justify-center shrink-0">
-          <Shield size={14} strokeWidth={1.5} className="text-[#6F6F6F]" />
+        <div className="w-7 h-7 rounded-full bg-[#10b981] flex items-center justify-center shrink-0">
+          <span className="text-white font-semibold text-[10px] leading-none">EE</span>
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-[13px] leading-tight text-[#2A2A2A] truncate">
-            Courtney Henry
+            Emirkan Erkara
           </p>
           <p className="text-[11px] leading-tight text-[#9A9A9A] truncate mt-0.5">
-            The Walt Disney Company
+            Independent Product Des...
           </p>
         </div>
         <ArrowLeftRight size={14} strokeWidth={1.5} className="text-[#9A9A9A] shrink-0" />
