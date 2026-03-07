@@ -7,6 +7,7 @@ import FilePage from "./pages/FilePage";
 import ReportingPage from "./pages/ReportingPage";
 import SettingsPage from "./pages/SettingsPage";
 import TasksPage from "./pages/TasksPage";
+import CalendarPage from "./pages/CalendarPage";
 
 export default function App() {
   return (
@@ -21,7 +22,7 @@ export default function App() {
           <Route path="/settings" element={<SettingsPage />} />
           {/* Placeholder routes for sidebar items */}
           <Route path="/tasks" element={<TasksPage />} />
-          <Route path="/calendar" element={<PlaceholderPage title="Calendar" />} />
+          <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/team" element={<PlaceholderPage title="Team" />} />
           <Route path="/automations" element={<PlaceholderPage title="Automations" />} />
           <Route path="/releases" element={<PlaceholderPage title="Releases" />} />
