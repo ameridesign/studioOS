@@ -44,14 +44,14 @@ export default function Layout() {
         </button>
       </div>
 
-      {/* Main content — margins animate with sidebar/rail */}
+      {/* Main content — margins animate with sidebar/rail (desktop only) */}
       <main
-        className="h-full pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto bg-white"
+        className="h-full pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto bg-white lg:ml-[var(--sidebar-w)] lg:mr-[var(--rail-w)]"
         style={{
-          marginLeft: `${sidebarW}px`,
-          marginRight: `${railW}px`,
+          "--sidebar-w": `${sidebarW}px`,
+          "--rail-w": `${railW}px`,
           transition: "margin 0.25s cubic-bezier(0.4,0,0.2,1)",
-        }}
+        } as React.CSSProperties}
       >
         <Outlet context={{ filters, setFilters, projects, addProject }} />
       </main>
