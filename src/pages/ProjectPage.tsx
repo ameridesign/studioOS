@@ -41,7 +41,7 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <div style={{ padding: "36px 40px", fontFamily: FONT }}>
+      <div className="px-4 pt-6 lg:px-10 lg:pt-9" style={{ fontFamily: FONT }}>
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#9A9A9A", textDecoration: "none", marginBottom: 24 }}>
           <ArrowLeft size={14} /> Back
         </Link>
@@ -51,7 +51,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <div style={{ padding: "36px 40px 52px", fontFamily: FONT, background: "#F6F6F4", minHeight: "100%" }}>
+    <div className="px-4 pt-6 pb-12 lg:px-10 lg:pt-9 lg:pb-[52px]" style={{ fontFamily: FONT, background: "#F6F6F4", minHeight: "100%" }}>
       {/* Back */}
       <Link
         to="/"
@@ -63,7 +63,7 @@ export default function ProjectPage() {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28 }} style={{ marginBottom: 28 }}>
         <p style={{ fontSize: 12, fontWeight: 500, color: "#A0A0A0", marginBottom: 4 }}>Project</p>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
           {/* Icon badge */}
           <div style={{
             width: 44, height: 44, borderRadius: 12,
@@ -74,7 +74,7 @@ export default function ProjectPage() {
           }}>
             <ProjectIcon size={20} style={{ color: "white" }} />
           </div>
-          <h1 style={{ fontSize: 54, fontWeight: 400, color: "#1A1A1A", lineHeight: 1.0, letterSpacing: "-0.025em", margin: 0 }}>
+          <h1 style={{ fontSize: "clamp(28px, 7vw, 54px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.0, letterSpacing: "-0.025em", margin: 0 }}>
             {project.name}
           </h1>
         </div>
@@ -82,7 +82,7 @@ export default function ProjectPage() {
       </motion.div>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 20 }}>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
         {projectStats.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -105,7 +105,7 @@ export default function ProjectPage() {
         <p style={{ fontSize: 11, fontWeight: 600, color: "#B0B0B0", letterSpacing: "0.08em", textTransform: "uppercase", margin: "0 0 12px" }}>
           Related Documentation
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {docCategories.slice(0, 4).map((cat) => (
             <div
               key={cat.id}

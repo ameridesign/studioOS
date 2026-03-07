@@ -43,12 +43,12 @@ export default function HomePage() {
   );
 
   return (
-    <div style={{ padding: "36px 40px 52px", fontFamily: FONT, background: "#F6F6F4", minHeight: "100%", maxWidth: "100%" }}>
+    <div className="px-4 pt-6 pb-12 lg:px-10 lg:pt-9 lg:pb-[52px]" style={{ fontFamily: FONT, background: "#F6F6F4", minHeight: "100%", maxWidth: "100%" }}>
 
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} style={{ marginBottom: 32 }}>
         <p style={{ fontSize: 12, fontWeight: 500, color: "#A0A0A0", marginBottom: 4, letterSpacing: "0.01em" }}>{today}</p>
-        <h1 style={{ fontSize: 54, fontWeight: 400, color: "#1A1A1A", lineHeight: 1.0, letterSpacing: "-0.025em", margin: "0 0 6px" }}>
+        <h1 style={{ fontSize: "clamp(28px, 7vw, 54px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.0, letterSpacing: "-0.025em", margin: "0 0 6px" }}>
           {greeting}, Emirkan
         </h1>
         <p style={{ fontSize: 14, color: "#9A9A9A", margin: 0 }}>Here&apos;s what&apos;s happening in your studio today.</p>
@@ -57,7 +57,7 @@ export default function HomePage() {
       {/* Stats */}
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.3 }}
-        style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 20 }}
+        className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5"
       >
         {stats.map((s, i) => (
           <motion.div
@@ -72,7 +72,7 @@ export default function HomePage() {
       </motion.div>
 
       {/* Projects + Activity */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-5">
 
         {/* Active Projects */}
         <motion.div

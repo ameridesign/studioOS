@@ -119,8 +119,8 @@ export default function DocsPage() {
 
   return (
     <div
+      className="px-4 pt-6 pb-12 lg:px-10 lg:pt-9 lg:pb-[52px]"
       style={{
-        padding: "36px 40px 52px",
         fontFamily: FONT,
         background: "#F6F6F4",
         minHeight: "100%",
@@ -129,13 +129,8 @@ export default function DocsPage() {
     >
       {/* ── Header ── */}
       <div
-        style={{
-          display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "space-between",
-          gap: 16,
-          marginBottom: 28,
-        }}
+        className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
+        style={{ marginBottom: 28 }}
       >
         {/* Title */}
         <div>
@@ -152,7 +147,7 @@ export default function DocsPage() {
           </p>
           <h1
             style={{
-              fontSize: 54,
+              fontSize: "clamp(28px, 7vw, 54px)",
               fontWeight: 400,
               color: "#1A1A1A",
               lineHeight: 1.0,
@@ -165,14 +160,15 @@ export default function DocsPage() {
         </div>
 
         {/* Controls */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8, paddingBottom: 6 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, paddingBottom: 6, flexWrap: "wrap" }}>
           {/* Search */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: 10,
-              width: 340,
+              flex: "1 1 200px",
+              minWidth: 0,
               height: 44,
               background: "white",
               border: "1px solid #E8E8E6",
@@ -253,12 +249,9 @@ export default function DocsPage() {
 
       {/* ── Doc Category Cards ── */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: gridView ? "repeat(3, 1fr)" : "1fr",
-          gap: 14,
-          marginBottom: 20,
-        }}
+        className={gridView
+          ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[14px] mb-5"
+          : "grid grid-cols-1 gap-[14px] mb-5"}
       >
         {filteredCategories.map((cat, i) => {
           const Icon = iconMap[cat.icon] ?? FileText;
@@ -387,8 +380,9 @@ export default function DocsPage() {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
             gap: 8,
+            overflowX: "auto",
+            paddingBottom: 4,
           }}
         >
           {shortcutItems.map((label) => (
@@ -399,8 +393,8 @@ export default function DocsPage() {
                 flexDirection: "column",
                 alignItems: "center",
                 cursor: "pointer",
-                flex: 1,
-                minWidth: 0,
+                flex: "0 0 auto",
+                minWidth: 80,
               }}
             >
               <MacFolderThumbnail />
@@ -424,7 +418,7 @@ export default function DocsPage() {
       </motion.div>
 
       {/* ── Analytics ── */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <EngagementChart />
         <ViewsEditsChart />
       </div>
