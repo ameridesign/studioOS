@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { PanelRightOpen } from "lucide-react";
+import { PanelRightOpen, Menu } from "lucide-react";
 import Sidebar from "./Sidebar";
 import RightRail from "./RightRail";
 import MobileNav from "./MobileNav";
@@ -33,14 +33,22 @@ export default function Layout() {
       />
 
       {/* Mobile top bar */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-white border-b border-warm-gray-200 flex items-center justify-between px-4 z-30">
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-white border-b border-warm-gray-200 flex items-center justify-between px-3 z-30">
+        <button
+          onClick={() => setSidebarMobileOpen(true)}
+          className="w-9 h-9 flex items-center justify-center rounded-xl text-warm-gray-600"
+          style={{ background: "white", boxShadow: "0 1px 4px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06)" }}
+          aria-label="Open navigation"
+        >
+          <Menu size={18} />
+        </button>
         <span className="font-semibold text-sm text-warm-gray-800">Studio OS</span>
         <button
           onClick={() => setRailMobileOpen(true)}
-          className="p-2 rounded-xl hover:bg-warm-gray-100 text-warm-gray-600"
+          className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-warm-gray-100 text-warm-gray-600"
           aria-label="Open files panel"
         >
-          <PanelRightOpen size={20} />
+          <PanelRightOpen size={18} />
         </button>
       </div>
 
@@ -63,7 +71,7 @@ export default function Layout() {
         onClose={() => setRailMobileOpen(false)}
       />
 
-      <MobileNav onMorePress={() => setSidebarMobileOpen(true)} />
+      <MobileNav />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { FileText, BarChart3, Settings, Menu } from "lucide-react";
+import { FileText, BarChart3, Settings } from "lucide-react";
 
 const navItems = [
   { icon: FileText, label: "Docs", path: "/docs" },
@@ -7,11 +7,7 @@ const navItems = [
   { icon: Settings, label: "Settings", path: "/settings" },
 ];
 
-interface MobileNavProps {
-  onMorePress: () => void;
-}
-
-export default function MobileNav({ onMorePress }: MobileNavProps) {
+export default function MobileNav() {
   const location = useLocation();
   const isActive = (path: string) => location.pathname.startsWith(path);
 
@@ -34,14 +30,7 @@ export default function MobileNav({ onMorePress }: MobileNavProps) {
           </span>
         </NavLink>
       ))}
-      <button
-        onClick={onMorePress}
-        className="flex-1 flex flex-col items-center justify-center gap-1 py-2"
-        aria-label="More navigation"
-      >
-        <Menu size={22} className="text-warm-gray-400" />
-        <span className="text-[10px] font-medium text-warm-gray-400">More</span>
-      </button>
     </nav>
   );
 }
+
