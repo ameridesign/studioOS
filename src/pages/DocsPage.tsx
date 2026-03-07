@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useId } from "react";
 import { useOutletContext } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -43,37 +43,61 @@ const shortcutItems = [
 ];
 
 function MacFolderThumbnail() {
+  const uid = useId().replace(/:/g, "");
+  const body   = `fBody-${uid}`;
+  const tab    = `fTab-${uid}`;
+  const lip    = `fLip-${uid}`;
+  const shadow = `fShadow-${uid}`;
+
   return (
-    <div style={{ position: "relative", width: 76, height: 62 }}>
-      {/* Tab */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 5,
-          width: 27,
-          height: 11,
-          borderRadius: "5px 5px 0 0",
-          background: "linear-gradient(to bottom, #b4b4b4, #a6a6a6)",
-          zIndex: 1,
-        }}
-      />
-      {/* Body */}
-      <div
-        style={{
-          position: "absolute",
-          top: 9,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          borderRadius: "3px 9px 9px 9px",
-          background: "linear-gradient(175deg, #cbcbcb 0%, #b9b9b9 100%)",
-          boxShadow:
-            "0 3px 8px rgba(0,0,0,0.11), 0 1px 2px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.22)",
-          border: "0.5px solid rgba(0,0,0,0.07)",
-        }}
-      />
-    </div>
+    <svg width="80" height="60" viewBox="0 0 96 72" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
+      <defs>
+        <linearGradient id={body} x1="48" y1="18" x2="48" y2="72" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#D9D9D9" />
+          <stop offset="55%"  stopColor="#C8C8C8" />
+          <stop offset="100%" stopColor="#B7B7B7" />
+        </linearGradient>
+        <linearGradient id={tab} x1="28" y1="10" x2="28" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#BEBEBE" />
+          <stop offset="100%" stopColor="#A9A9A9" />
+        </linearGradient>
+        <linearGradient id={lip} x1="48" y1="16" x2="48" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#E4E4E4" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#CFCFCF" stopOpacity="0.6" />
+        </linearGradient>
+        <filter id={shadow} x="-10%" y="-10%" width="120%" height="130%" filterUnits="objectBoundingBox">
+          <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#000000" floodOpacity="0.12" />
+        </filter>
+      </defs>
+      <g filter={`url(#${shadow})`}>
+        {/* Folder tab */}
+        <path
+          d="M16 18C16 14.6863 18.6863 12 22 12H34.5C36.3 12 37.9 12.8 39 14.2L42.2 18H74C77.3137 18 80 20.6863 80 24V26H16V18Z"
+          fill={`url(#${tab})`}
+        />
+        {/* Top lip */}
+        <path
+          d="M16 24C16 20.6863 18.6863 18 22 18H74C77.3137 18 80 20.6863 80 24V27H16V24Z"
+          fill={`url(#${lip})`}
+        />
+        {/* Folder body */}
+        <rect x="16" y="22" width="64" height="38" rx="8" fill={`url(#${body})`} />
+        {/* Inner highlight */}
+        <path
+          d="M20 28C20 25.7909 21.7909 24 24 24H72C74.2091 24 76 25.7909 76 28V30H20V28Z"
+          fill="white"
+          fillOpacity="0.18"
+        />
+        {/* Soft bottom shading */}
+        <path
+          d="M16 48H80V52C80 56.4183 76.4183 60 72 60H24C19.5817 60 16 56.4183 16 52V48Z"
+          fill="black"
+          fillOpacity="0.05"
+        />
+        {/* Edge stroke */}
+        <rect x="16.5" y="22.5" width="63" height="37" rx="7.5" stroke="#AFAFAF" strokeOpacity="0.7" />
+      </g>
+    </svg>
   );
 }
 
