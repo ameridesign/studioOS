@@ -8,9 +8,9 @@ interface FileModalProps {
 }
 
 const typeColors: Record<string, string> = {
-  FIG: "bg-purple-100 text-purple-700",
+  FIG: "bg-warm-gray-100 text-warm-gray-600",
   PDF: "bg-red-100 text-red-700",
-  MD: "bg-blue-100 text-blue-700",
+  MD: "bg-warm-gray-100 text-warm-gray-600",
   XLSX: "bg-green-100 text-green-700",
   DRAWIO: "bg-amber-100 text-amber-700",
   TXT: "bg-gray-100 text-gray-700",

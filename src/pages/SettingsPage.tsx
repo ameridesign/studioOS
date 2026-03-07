@@ -60,7 +60,7 @@ export default function SettingsPage() {
             <div className="space-y-5">
               <h2 className="font-semibold text-base text-warm-gray-800">Profile</h2>
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center text-white font-bold text-xl">EE</div>
+                <div className="w-16 h-16 rounded-full bg-[#1A1A1A] flex items-center justify-center text-white font-bold text-xl">EE</div>
                 <div>
                   <p className="font-semibold text-warm-gray-800">Emirkan Erkara</p>
                   <p className="text-sm text-warm-gray-500">Independent Product Designer</p>

@@ -22,18 +22,18 @@ function getGreeting() {
 }
 
 const stats = [
-  { label: "Active Projects", value: "4", icon: Folder, color: "#6366f1" },
+  { label: "Active Projects", value: "4", icon: Folder, color: "#1A1A1A" },
   { label: "Open Tasks", value: "12", icon: CheckSquare, color: "#10b981" },
   { label: "Total Files", value: "156", icon: FileText, color: "#f59e0b" },
   { label: "Weekly Activity", value: "1,730", icon: BarChart3, color: "#ec4899" },
 ];
 
 const activityFeed = [
-  { id: 1, action: "Updated", file: "atlas-crm-brief-v3.pdf", time: "2h ago", user: "Emir", color: "#6366f1" },
+  { id: 1, action: "Updated", file: "atlas-crm-brief-v3.pdf", time: "2h ago", user: "Emir", color: "#1A1A1A" },
   { id: 2, action: "Shared", file: "sprint-27-retro-notes.md", time: "4h ago", user: "Farhan", color: "#10b981" },
   { id: 3, action: "Uploaded", file: "usability-round-3.pdf", time: "Yesterday", user: "Mehdi", color: "#f59e0b" },
   { id: 4, action: "Commented on", file: "figma-handoff-checklist.xlsx", time: "Yesterday", user: "Sarah", color: "#ec4899" },
-  { id: 5, action: "Created", file: "tokens-v2.json", time: "2 days ago", user: "Emir", color: "#6366f1" },
+  { id: 5, action: "Created", file: "tokens-v2.json", time: "2 days ago", user: "Emir", color: "#1A1A1A" },
 ];
 
 const quickActions = [

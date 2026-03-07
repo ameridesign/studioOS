@@ -41,14 +41,24 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className={`p-2 rounded-xl border transition-all duration-150
-          ${hasActive
-            ? "border-accent bg-accent-muted text-accent"
-            : "border-warm-gray-200 text-warm-gray-500 hover:bg-warm-gray-100 hover:text-warm-gray-700"
-          }`}
+        style={{
+          height: 44,
+          padding: "0 16px",
+          background: "white",
+          border: hasActive ? "1.5px solid #C0C0BE" : "1px solid #E8E8E6",
+          borderRadius: 15,
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          cursor: "pointer",
+          fontSize: 14,
+          fontWeight: 500,
+          color: "#3A3A3A",
+        }}
         aria-label="Filter"
       >
-        <Filter size={16} />
+        <Filter size={15} style={{ color: hasActive ? "#1A1A1A" : "#A0A0A0" }} />
+        Filter
       </button>
 
       <AnimatePresence>

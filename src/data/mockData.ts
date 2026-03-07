@@ -113,7 +113,7 @@ export const recentFiles: FileItem[] = [
 ];
 
 export const projects: Project[] = [
-  { id: "atlas-crm", name: "Atlas CRM", color: "#6366f1" },
+  { id: "atlas-crm", name: "Atlas CRM", color: "#1a1a1a" },
   { id: "studioos-v2", name: "Studio OS v2", color: "#f59e0b" },
   { id: "mobile-app", name: "Mobile App", color: "#10b981" },
   { id: "website-redesign", name: "Website Redesign", color: "#ec4899" },
