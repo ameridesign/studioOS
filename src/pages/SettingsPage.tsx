@@ -13,7 +13,7 @@ export default function SettingsPage() {
   const [active, setActive] = useState("profile");
 
   return (
-    <div className="p-6 lg:p-8">
+    <div className="px-4 pt-6 pb-12 lg:px-10 lg:pt-9 lg:pb-[52px]">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export default function SettingsPage() {
                 onClick={() => setActive(s.id)}
                 className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-medium transition-all whitespace-nowrap
                   ${active === s.id
-                    ? "bg-accent text-white shadow-sm"
+                    ? "bg-accent text-white"
                     : "text-warm-gray-600 hover:bg-warm-gray-100"
                   }`}
               >
@@ -54,7 +54,7 @@ export default function SettingsPage() {
           key={active}
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex-1 bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-6"
+          className="flex-1 bg-white rounded-2xl border border-warm-gray-200 p-6"
         >
           {active === "profile" && (
             <div className="space-y-5">
@@ -92,7 +92,7 @@ export default function SettingsPage() {
                 <div key={item} className="flex items-center justify-between py-2 border-b border-warm-gray-100">
                   <span className="text-sm text-warm-gray-700">{item}</span>
                   <div className="w-10 h-6 bg-accent rounded-full relative cursor-pointer">
-                    <span className="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-all" />
+                    <span className="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-all" />
                   </div>
                 </div>
               ))}

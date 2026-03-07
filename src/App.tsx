@@ -6,6 +6,7 @@ import ProjectPage from "./pages/ProjectPage";
 import FilePage from "./pages/FilePage";
 import ReportingPage from "./pages/ReportingPage";
 import SettingsPage from "./pages/SettingsPage";
+import TasksPage from "./pages/TasksPage";
 
 export default function App() {
   return (
@@ -19,7 +20,7 @@ export default function App() {
           <Route path="/reporting" element={<ReportingPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           {/* Placeholder routes for sidebar items */}
-          <Route path="/tasks" element={<PlaceholderPage title="Tasks" />} />
+          <Route path="/tasks" element={<TasksPage />} />
           <Route path="/calendar" element={<PlaceholderPage title="Calendar" />} />
           <Route path="/team" element={<PlaceholderPage title="Team" />} />
           <Route path="/automations" element={<PlaceholderPage title="Automations" />} />
@@ -36,7 +37,7 @@ function PlaceholderPage({ title }: { title: string }) {
     <div className="p-6 lg:p-8">
       <p className="text-xs font-medium text-warm-gray-400 uppercase tracking-wider mb-1">{title}</p>
       <h1 className="text-2xl font-bold text-warm-gray-900 mb-4">{title}</h1>
-      <div className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-8 text-center">
+      <div className="bg-white rounded-2xl border border-warm-gray-200 p-8 text-center">
         <p className="text-warm-gray-500 text-sm">This page is under construction.</p>
       </div>
     </div>

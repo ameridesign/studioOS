@@ -9,10 +9,10 @@ interface FileModalProps {
 
 const typeColors: Record<string, string> = {
   FIG: "bg-warm-gray-100 text-warm-gray-600",
-  PDF: "bg-red-100 text-red-700",
+  PDF: "bg-warm-gray-100 text-warm-gray-700",
   MD: "bg-warm-gray-100 text-warm-gray-600",
-  XLSX: "bg-green-100 text-green-700",
-  DRAWIO: "bg-amber-100 text-amber-700",
+  XLSX: "bg-warm-gray-100 text-warm-gray-700",
+  DRAWIO: "bg-warm-gray-100 text-warm-gray-700",
   TXT: "bg-gray-100 text-gray-700",
 };
 
@@ -33,7 +33,7 @@ export default function FileModal({ file, onClose }: FileModalProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm bg-white rounded-2xl border border-warm-gray-200 shadow-2xl z-50 overflow-hidden"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm bg-white rounded-2xl border border-warm-gray-200 z-50 overflow-hidden"
           >
             <div className="p-5 border-b border-warm-gray-200 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
@@ -74,7 +74,7 @@ export default function FileModal({ file, onClose }: FileModalProps) {
 
               <button
                 onClick={onClose}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-accent text-white text-sm font-medium hover:bg-accent/90 transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A1A1A] text-white hover:bg-[#2A2A2A] transition-colors"
                 aria-label="Open file"
               >
                 <ExternalLink size={14} />

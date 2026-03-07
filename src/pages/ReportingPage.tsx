@@ -5,7 +5,7 @@ import { docCategories } from "../data/mockData";
 
 export default function ReportingPage() {
   return (
-    <div className="p-6 lg:p-8">
+    <div className="px-4 pt-6 pb-12 lg:px-10 lg:pt-9 lg:pb-[52px]">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export default function ReportingPage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm overflow-hidden"
+        className="bg-white rounded-2xl border border-warm-gray-200 overflow-hidden"
       >
         <div className="p-5 border-b border-warm-gray-200">
           <h3 className="font-semibold text-sm text-warm-gray-800">Documentation by Category</h3>

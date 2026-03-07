@@ -68,7 +68,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -4 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl border border-warm-gray-200 shadow-lg z-50 p-4"
+            className="absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl border border-[#E8E8E6] z-50 p-4"
           >
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold text-sm text-warm-gray-800">Filters</h3>
@@ -114,7 +114,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
               <select
                 value={local.sharedBy}
                 onChange={(e) => setLocal((p) => ({ ...p, sharedBy: e.target.value }))}
-                className="w-full px-3 py-1.5 rounded-xl border border-warm-gray-200 text-sm bg-white text-warm-gray-700 focus:outline-none focus:ring-2 focus:ring-accent/30"
+                className="w-full px-3 py-1.5 rounded-xl border border-warm-gray-200 text-sm bg-white text-warm-gray-700 focus:outline-none "
               >
                 <option value="">All</option>
                 {sharedByOptions.map((s) => (
@@ -153,7 +153,7 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
               </button>
               <button
                 onClick={() => { onApply(local); setOpen(false); }}
-                className="flex-1 px-3 py-1.5 rounded-xl bg-accent text-white text-sm font-medium hover:bg-accent/90 transition-colors"
+                className="flex-1 px-3 py-1.5 rounded-xl bg-[#1A1A1A] text-white text-sm font-medium hover:bg-[#2A2A2A] transition-colors"
               >
                 Apply
               </button>

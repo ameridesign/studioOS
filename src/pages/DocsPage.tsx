@@ -266,23 +266,23 @@ export default function DocsPage() {
                 background: "white",
                 border: "1px solid #EAEAE8",
                 borderRadius: 18,
-                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                
                 padding: 20,
                 cursor: "pointer",
                 display: gridView ? "block" : "flex",
                 alignItems: gridView ? undefined : "center",
                 gap: gridView ? undefined : 18,
-                transition: "box-shadow 0.15s, transform 0.15s",
+                transition: "background 0.12s",
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
                 el.style.boxShadow = "0 6px 20px rgba(0,0,0,0.07)";
-                el.style.transform = "translateY(-1px)";
+                
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)";
-                el.style.transform = "translateY(0)";
+                el.style.background = "white";
+                
               }}
             >
               {/* Icon badge */}
@@ -361,7 +361,7 @@ export default function DocsPage() {
           background: "white",
           border: "1px solid #EAEAE8",
           borderRadius: 18,
-          boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+          
           padding: "22px 24px 24px",
           marginBottom: 20,
         }}

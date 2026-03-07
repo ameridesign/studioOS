@@ -64,13 +64,11 @@ export default function ProjectPage() {
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28 }} style={{ marginBottom: 28 }}>
         <p style={{ fontSize: 12, fontWeight: 500, color: "#A0A0A0", marginBottom: 4 }}>Project</p>
         <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-          {/* Icon badge */}
           <div style={{
             width: 44, height: 44, borderRadius: 12,
             background: "#1A1A1A",
             display: "flex", alignItems: "center", justifyContent: "center",
             flexShrink: 0,
-            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.07)",
           }}>
             <ProjectIcon size={20} style={{ color: "white" }} />
           </div>
@@ -89,7 +87,7 @@ export default function ProjectPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + i * 0.04, duration: 0.26 }}
-            style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "18px 20px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
+            style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "18px 20px" }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 10 }}>
               <stat.icon size={14} style={{ color: "#B0B0B0" }} />
@@ -111,20 +109,10 @@ export default function ProjectPage() {
               key={cat.id}
               style={{
                 background: "white", border: "1px solid #EAEAE8", borderRadius: 16,
-                padding: "18px 20px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-                transition: "box-shadow 0.15s, transform 0.15s",
-                cursor: "pointer",
+                padding: "18px 20px", transition: "background 0.12s", cursor: "pointer",
               }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.boxShadow = "0 6px 20px rgba(0,0,0,0.07)";
-                el.style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)";
-                el.style.transform = "translateY(0)";
-              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#FAFAF9"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "white"; }}
             >
               <h3 style={{ fontSize: 14, fontWeight: 600, color: "#1A1A1A", margin: "0 0 6px" }}>{cat.title}</h3>
               <p style={{ fontSize: 12, color: "#9A9A9A", margin: "0 0 10px", lineHeight: 1.45 }}>{cat.description}</p>

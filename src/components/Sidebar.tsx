@@ -132,7 +132,7 @@ export default function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onClo
           onClick={() => setAccountOpen((v) => !v)}
           className="w-full bg-white border border-[#E8E8E6] rounded-[15px] px-[11px] py-[10px] flex items-center gap-[10px] hover:bg-[#F6F6F4] transition-colors text-left"
         >
-          <div className="w-7 h-7 rounded-full bg-[#10b981] flex items-center justify-center shrink-0">
+          <div className="w-7 h-7 rounded-full bg-[#2A2A2A] flex items-center justify-center shrink-0">
             <span className="text-white font-semibold text-[10px] leading-none">EE</span>
           </div>
           <div className="flex-1 min-w-0">
@@ -154,7 +154,7 @@ export default function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onClo
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: -4 }}
               transition={{ duration: 0.15 }}
-              className="absolute left-0 right-0 top-full mt-1.5 bg-white border border-[#E8E8E6] rounded-[15px] shadow-lg z-50 overflow-hidden py-1"
+              className="absolute left-0 right-0 top-full mt-1.5 bg-white border border-[#E8E8E6] rounded-[15px] z-50 overflow-hidden py-1"
             >
               <div className="px-3 py-2 border-b border-[#F0F0EE]">
                 <p className="text-[13px] font-semibold text-[#2A2A2A]">Emirkan Erkara</p>
@@ -209,7 +209,7 @@ export default function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onClo
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.12 }}
-              className="absolute left-0 right-0 top-full mt-1.5 bg-white border border-[#E8E8E6] rounded-[15px] shadow-lg z-50 overflow-hidden py-1"
+              className="absolute left-0 right-0 top-full mt-1.5 bg-white border border-[#E8E8E6] rounded-[15px] z-50 overflow-hidden py-1"
             >
               {searchResults.length > 0 ? (
                 searchResults.map((item) => (

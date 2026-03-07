@@ -68,7 +68,7 @@ export default function CategoryDrawer({ category, onClose }: CategoryDrawerProp
                 background: "white",
                 borderRadius: 20,
                 border: "1px solid #E8E8E6",
-                boxShadow: "0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)",
+                
                 display: "flex", flexDirection: "column",
                 fontFamily: FONT,
                 overflow: "hidden",

@@ -115,7 +115,7 @@ export default function RightRail({ collapsed, onToggleCollapse, mobileOpen, onC
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + i * 0.05, duration: 0.25 }}
-            className="border border-warm-gray-200 rounded-[15px] p-3 bg-white hover:border-warm-gray-300 hover:shadow-sm transition-all duration-150 cursor-pointer"
+            className="border border-warm-gray-200 rounded-[15px] p-3 bg-white hover:border-warm-gray-300 transition-all duration-150 cursor-pointer"
           >
             <p className="font-semibold text-[13px] text-warm-gray-800 truncate mb-2">
               {file.filename}
@@ -180,7 +180,7 @@ export default function RightRail({ collapsed, onToggleCollapse, mobileOpen, onC
             onClick={onToggleCollapse}
             title="Open panel"
             aria-label="Open panel"
-            className="hidden lg:flex fixed right-3 top-3 z-20 w-8 h-8 items-center justify-center rounded-[10px] bg-white border border-[#E8E8E6] text-[#9A9A9A] hover:text-[#4A4A4A] hover:border-[#C0C0BE] shadow-sm transition-colors"
+            className="hidden lg:flex fixed right-3 top-3 z-20 w-8 h-8 items-center justify-center rounded-[10px] bg-white border border-[#E8E8E6] text-[#9A9A9A] hover:text-[#4A4A4A] hover:border-[#C0C0BE] transition-colors"
           >
             <PanelRightOpen size={15} strokeWidth={1.5} />
           </motion.button>

@@ -5,10 +5,10 @@ import { recentFiles, docCategories } from "../data/mockData";
 
 const typeColors: Record<string, string> = {
   FIG: "bg-warm-gray-100 text-warm-gray-600",
-  PDF: "bg-red-100 text-red-700",
+  PDF: "bg-warm-gray-100 text-warm-gray-700",
   MD: "bg-warm-gray-100 text-warm-gray-600",
-  XLSX: "bg-green-100 text-green-700",
-  DRAWIO: "bg-amber-100 text-amber-700",
+  XLSX: "bg-warm-gray-100 text-warm-gray-700",
+  DRAWIO: "bg-warm-gray-100 text-warm-gray-700",
   TXT: "bg-gray-100 text-gray-700",
 };
 
@@ -23,7 +23,7 @@ export default function FilePage() {
 
   if (!file) {
     return (
-      <div className="p-8">
+      <div className="px-4 pt-6 pb-12 lg:px-10 lg:pt-9 lg:pb-[52px]">
         <Link to="/docs" className="flex items-center gap-2 text-sm text-warm-gray-500 hover:text-warm-gray-700 mb-6">
           <ArrowLeft size={16} /> Back to Docs
         </Link>
@@ -41,7 +41,7 @@ export default function FilePage() {
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-6 lg:p-8 max-w-2xl"
+        className="bg-white rounded-2xl border border-warm-gray-200 p-6 lg:p-8 max-w-2xl"
       >
         <div className="flex items-start gap-4 mb-6">
           <div className="p-3 rounded-2xl bg-warm-gray-100">
@@ -70,7 +70,7 @@ export default function FilePage() {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent text-white text-sm font-medium hover:bg-accent/90 transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A1A1A] text-white text-sm font-medium hover:bg-[#2A2A2A] transition-colors">
             <ExternalLink size={14} /> Open File
           </button>
           <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-warm-gray-200 text-sm text-warm-gray-600 hover:bg-warm-gray-100 transition-colors">

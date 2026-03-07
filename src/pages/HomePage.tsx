@@ -63,7 +63,7 @@ export default function HomePage() {
           <motion.div
             key={s.label}
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 + i * 0.04, duration: 0.26 }}
-            style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "18px 20px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
+            style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "18px 20px",  }}
           >
             <p style={{ fontSize: 28, fontWeight: 500, color: "#1A1A1A", lineHeight: 1, margin: "0 0 6px", letterSpacing: "-0.02em" }}>{s.value}</p>
             <p style={{ fontSize: 12, color: "#9A9A9A", margin: 0 }}>{s.label}</p>
@@ -77,7 +77,7 @@ export default function HomePage() {
         {/* Active Projects */}
         <motion.div
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22, duration: 0.28 }}
-          style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
+          style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px",  }}
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
             <h2 style={{ fontSize: 14, fontWeight: 500, color: "#1A1A1A", margin: 0 }}>Active Projects</h2>
@@ -111,7 +111,7 @@ export default function HomePage() {
         {/* Recent Activity */}
         <motion.div
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.26, duration: 0.28 }}
-          style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
+          style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px",  }}
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
             <h2 style={{ fontSize: 14, fontWeight: 500, color: "#1A1A1A", margin: 0 }}>Recent Activity</h2>
@@ -142,7 +142,7 @@ export default function HomePage() {
       {/* Recent Files */}
       <motion.div
         initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32, duration: 0.28 }}
-        style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
+        style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px",  }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
           <h2 style={{ fontSize: 14, fontWeight: 500, color: "#1A1A1A", margin: 0 }}>Recent Files</h2>
