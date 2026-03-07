@@ -5,12 +5,6 @@ import {
   Search,
   LayoutGrid,
   List,
-  Bookmark,
-  Edit3,
-  Trash2,
-  Mail,
-  Power,
-  Share2,
   FileText,
   Palette,
   FlaskConical,
@@ -35,15 +29,6 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   PenTool,
   Archive,
 };
-
-const toolbarItems = [
-  { icon: Bookmark, label: "Bookmark" },
-  { icon: Edit3, label: "Edit" },
-  { icon: Trash2, label: "Delete" },
-  { icon: Mail, label: "Email" },
-  { icon: Power, label: "Power" },
-  { icon: Share2, label: "Share" },
-];
 
 export default function DocsPage() {
   const { filters, setFilters } = useOutletContext<LayoutContext>();
@@ -153,25 +138,6 @@ export default function DocsPage() {
             </motion.div>
           );
         })}
-      </motion.div>
-
-      {/* Toolbar Row */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.35, duration: 0.3 }}
-        className="flex items-center justify-end gap-1 mb-8"
-      >
-        {toolbarItems.map((item) => (
-          <button
-            key={item.label}
-            className="p-2 rounded-xl text-warm-gray-400 hover:text-warm-gray-700 hover:bg-warm-gray-100 transition-colors"
-            aria-label={item.label}
-            title={item.label}
-          >
-            <item.icon size={16} />
-          </button>
-        ))}
       </motion.div>
 
       {/* Shortcuts */}
