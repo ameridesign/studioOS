@@ -23,6 +23,10 @@ import {
   User,
   LogOut,
   CreditCard,
+  Building2,
+  Layers,
+  Smartphone,
+  Globe,
 } from "lucide-react";
 
 const SIDEBAR_FONT =
@@ -39,10 +43,10 @@ const essentialItems = [
 ];
 
 const sidebarProjects = [
-  { id: "atlas-crm", name: "Atlas CRM", color: "#1a1a1a" },
-  { id: "studioos-v2", name: "Studio OS v2", color: "#F59E0B" },
-  { id: "mobile-app", name: "Mobile App", color: "#10b981" },
-  { id: "website-redesign", name: "Website Redesign", color: "#ec4899" },
+  { id: "atlas-crm",        name: "Atlas CRM",         icon: Building2  },
+  { id: "studioos-v2",      name: "Studio OS v2",       icon: Layers     },
+  { id: "mobile-app",       name: "Mobile App",         icon: Smartphone },
+  { id: "website-redesign", name: "Website Redesign",   icon: Globe      },
 ];
 
 const supportItems = [
@@ -58,7 +62,7 @@ const appItems = [
 // All searchable items flattened
 const allSearchItems = [
   ...essentialItems.map((i) => ({ label: i.label, path: i.path, type: "nav" as const, icon: i.icon })),
-  ...sidebarProjects.map((p) => ({ label: p.name, path: `/projects/${p.id}`, type: "project" as const, color: p.color })),
+  ...sidebarProjects.map((p) => ({ label: p.name, path: `/projects/${p.id}`, type: "project" as const, icon: p.icon })),
   ...supportItems.map((i) => ({ label: i.label, path: i.path, type: "nav" as const, icon: i.icon })),
 ];
 
@@ -214,10 +218,7 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
                     className="w-full flex items-center gap-[10px] h-[35px] px-3 text-[13px] text-[#2A2A2A] hover:bg-[#F6F6F4] transition-colors text-left"
                   >
                     {item.type === "project" ? (
-                      <span
-                        className="w-3 h-3 rounded-[3px] shrink-0"
-                        style={{ backgroundColor: (item as { color: string }).color }}
-                      />
+                      (() => { const ProjIcon = (item as { icon: React.ComponentType<{size?:number;className?:string}> }).icon; return <ProjIcon size={13} className="text-[#8A8A8A] shrink-0" />; })()
                     ) : (
                       <item.icon size={14} strokeWidth={1.5} className="text-[#9A9A9A] shrink-0" />
                     )}
@@ -301,7 +302,7 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
                       }`}
                     aria-label={project.name}
                   >
-                    <span className="w-[13px] h-[13px] rounded-[3px] shrink-0" style={{ backgroundColor: project.color }} />
+                    <project.icon size={13} className="shrink-0 text-[#8A8A8A]" />
                     <span>{project.name}</span>
                   </NavLink>
                 ))}

@@ -1,213 +1,134 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  FileText,
-  Folder,
-  CheckSquare,
-  BarChart3,
-  Clock,
-  Users,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, FileText, Clock } from "lucide-react";
 import { projects, recentFiles } from "../data/mockData";
-import EngagementChart from "../components/EngagementChart";
+
+const FONT =
+  'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
 
 function getGreeting() {
-  const hour = new Date().getHours();
-  if (hour < 12) return "Good morning";
-  if (hour < 17) return "Good afternoon";
+  const h = new Date().getHours();
+  if (h < 12) return "Good morning";
+  if (h < 17) return "Good afternoon";
   return "Good evening";
 }
 
 const stats = [
-  { label: "Active Projects", value: "4", icon: Folder, color: "#1A1A1A" },
-  { label: "Open Tasks", value: "12", icon: CheckSquare, color: "#10b981" },
-  { label: "Total Files", value: "156", icon: FileText, color: "#f59e0b" },
-  { label: "Weekly Activity", value: "1,730", icon: BarChart3, color: "#ec4899" },
+  { label: "Active Projects", value: "4" },
+  { label: "Open Tasks",      value: "12" },
+  { label: "Total Files",     value: "156" },
+  { label: "Weekly Activity", value: "1,730" },
 ];
 
 const activityFeed = [
-  { id: 1, action: "Updated", file: "atlas-crm-brief-v3.pdf", time: "2h ago", user: "Emir", color: "#1A1A1A" },
-  { id: 2, action: "Shared", file: "sprint-27-retro-notes.md", time: "4h ago", user: "Farhan", color: "#10b981" },
-  { id: 3, action: "Uploaded", file: "usability-round-3.pdf", time: "Yesterday", user: "Mehdi", color: "#f59e0b" },
-  { id: 4, action: "Commented on", file: "figma-handoff-checklist.xlsx", time: "Yesterday", user: "Sarah", color: "#ec4899" },
-  { id: 5, action: "Created", file: "tokens-v2.json", time: "2 days ago", user: "Emir", color: "#1A1A1A" },
+  { id: 1, action: "Updated",      file: "atlas-crm-brief-v3.pdf",       time: "2h ago",     user: "Emir" },
+  { id: 2, action: "Shared",       file: "sprint-27-retro-notes.md",      time: "4h ago",     user: "Farhan" },
+  { id: 3, action: "Uploaded",     file: "usability-round-3.pdf",         time: "Yesterday",  user: "Mehdi" },
+  { id: 4, action: "Commented on", file: "figma-handoff-checklist.xlsx",  time: "Yesterday",  user: "Sarah" },
+  { id: 5, action: "Created",      file: "tokens-v2.json",                time: "2 days ago", user: "Emir" },
 ];
 
-const quickActions = [
-  { label: "New Doc", icon: FileText, path: "/docs" },
-  { label: "Tasks", icon: CheckSquare, path: "/tasks" },
-  { label: "Team", icon: Users, path: "/team" },
-  { label: "Automations", icon: Zap, path: "/automations" },
-];
+const progresses = [72, 45, 88, 31];
 
 export default function HomePage() {
   const navigate = useNavigate();
   const greeting = useMemo(() => getGreeting(), []);
   const today = useMemo(
-    () =>
-      new Date().toLocaleDateString("en-US", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-      }),
+    () => new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }),
     []
   );
 
   return (
-    <div className="p-6 lg:p-8 max-w-full">
-      {/* Hero greeting */}
-      <motion.div
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35 }}
-        className="mb-8"
-      >
-        <p className="text-xs font-medium text-warm-gray-400 uppercase tracking-wider mb-1">
-          {today}
-        </p>
-        <h1 className="text-2xl font-bold text-warm-gray-900">
-          {greeting}, Emirkan 👋
+    <div style={{ padding: "36px 40px 52px", fontFamily: FONT, background: "#F6F6F4", minHeight: "100%", maxWidth: "100%" }}>
+
+      {/* Header */}
+      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} style={{ marginBottom: 32 }}>
+        <p style={{ fontSize: 12, fontWeight: 500, color: "#A0A0A0", marginBottom: 4, letterSpacing: "0.01em" }}>{today}</p>
+        <h1 style={{ fontSize: 54, fontWeight: 400, color: "#1A1A1A", lineHeight: 1.0, letterSpacing: "-0.025em", margin: "0 0 6px" }}>
+          {greeting}, Emirkan
         </h1>
-        <p className="text-sm text-warm-gray-500 mt-1">
-          Here's what's happening in your studio today.
-        </p>
+        <p style={{ fontSize: 14, color: "#9A9A9A", margin: 0 }}>Here&apos;s what&apos;s happening in your studio today.</p>
       </motion.div>
 
-      {/* Quick actions */}
+      {/* Stats */}
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.08, duration: 0.3 }}
-        className="flex gap-2 mb-8 flex-wrap"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.3 }}
+        style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 20 }}
       >
-        {quickActions.map((action) => (
-          <button
-            key={action.label}
-            onClick={() => navigate(action.path)}
-            className="flex items-center gap-2 h-9 px-4 rounded-[13px] bg-white border border-warm-gray-200 text-[13px] font-medium text-warm-gray-700 hover:border-warm-gray-300 hover:shadow-sm transition-all duration-150"
-          >
-            <action.icon size={14} className="text-warm-gray-500" />
-            {action.label}
-          </button>
-        ))}
-      </motion.div>
-
-      {/* Stats row */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.12, duration: 0.3 }}
-        className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-8"
-      >
-        {stats.map((stat, i) => (
+        {stats.map((s, i) => (
           <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 + i * 0.05, duration: 0.3 }}
-            className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-5"
+            key={s.label}
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 + i * 0.04, duration: 0.26 }}
+            style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "18px 20px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
           >
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
-              style={{ background: stat.color + "18" }}
-            >
-              <stat.icon size={16} style={{ color: stat.color }} />
-            </div>
-            <p className="text-2xl font-bold text-warm-gray-900 leading-none mb-1">
-              {stat.value}
-            </p>
-            <p className="text-xs text-warm-gray-500">{stat.label}</p>
+            <p style={{ fontSize: 28, fontWeight: 500, color: "#1A1A1A", lineHeight: 1, margin: "0 0 6px", letterSpacing: "-0.02em" }}>{s.value}</p>
+            <p style={{ fontSize: 12, color: "#9A9A9A", margin: 0 }}>{s.label}</p>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Active Projects + Recent Activity */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-8">
-        {/* Projects */}
+      {/* Projects + Activity */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+
+        {/* Active Projects */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.3 }}
-          className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-5"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22, duration: 0.28 }}
+          style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
         >
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-semibold text-sm text-warm-gray-800">Active Projects</h2>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
+            <h2 style={{ fontSize: 14, fontWeight: 500, color: "#1A1A1A", margin: 0 }}>Active Projects</h2>
             <button
               onClick={() => navigate("/docs")}
-              className="flex items-center gap-1 text-xs text-warm-gray-400 hover:text-warm-gray-700 transition-colors"
+              style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "#B0B0B0", background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: FONT }}
             >
-              View all <ArrowRight size={12} />
+              View all <ArrowRight size={11} />
             </button>
           </div>
-          <div className="space-y-3">
-            {projects.map((project, i) => {
-              const progress = [72, 45, 88, 31][i] ?? 50;
-              return (
-                <div key={project.id} className="flex items-center gap-3">
-                  <div
-                    className="w-2.5 h-2.5 rounded-full shrink-0"
-                    style={{ background: project.color }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[13px] font-medium text-warm-gray-800 truncate">
-                        {project.name}
-                      </span>
-                      <span className="text-[11px] text-warm-gray-400 ml-2 shrink-0">
-                        {progress}%
-                      </span>
-                    </div>
-                    <div className="h-1 bg-warm-gray-100 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${progress}%` }}
-                        transition={{ delay: 0.4 + i * 0.07, duration: 0.5, ease: "easeOut" }}
-                        className="h-full rounded-full"
-                        style={{ background: project.color }}
-                      />
-                    </div>
-                  </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {projects.map((project, i) => (
+              <div key={project.id}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                  <span style={{ fontSize: 13, fontWeight: 500, color: "#1A1A1A" }}>{project.name}</span>
+                  <span style={{ fontSize: 11, color: "#B0B0B0" }}>{progresses[i]}%</span>
                 </div>
-              );
-            })}
+                <div style={{ height: 3, background: "#F0F0EE", borderRadius: 99, overflow: "hidden" }}>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progresses[i]}%` }}
+                    transition={{ delay: 0.35 + i * 0.06, duration: 0.5, ease: "easeOut" }}
+                    style={{ height: "100%", background: "#1A1A1A", borderRadius: 99 }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
         {/* Recent Activity */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.3 }}
-          className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-5"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.26, duration: 0.28 }}
+          style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
         >
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-semibold text-sm text-warm-gray-800">Recent Activity</h2>
-            <Clock size={14} className="text-warm-gray-400" />
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
+            <h2 style={{ fontSize: 14, fontWeight: 500, color: "#1A1A1A", margin: 0 }}>Recent Activity</h2>
+            <Clock size={13} style={{ color: "#C0C0C0" }} />
           </div>
-          <div className="space-y-3">
+          <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
             {activityFeed.map((item) => (
-              <div key={item.id} className="flex items-start gap-3">
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                  style={{ background: item.color + "18" }}
-                >
-                  <span
-                    className="text-[9px] font-bold"
-                    style={{ color: item.color }}
-                  >
+              <div key={item.id} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#F0F0EE", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                  <span style={{ fontSize: 9, fontWeight: 600, color: "#5A5A5A", letterSpacing: "0.02em" }}>
                     {item.user.slice(0, 2).toUpperCase()}
                   </span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[12px] text-warm-gray-700 leading-snug">
-                    <span className="font-medium">{item.user}</span>{" "}
-                    {item.action}{" "}
-                    <span className="text-warm-gray-500 truncate">{item.file}</span>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <p style={{ fontSize: 12, color: "#3A3A3A", lineHeight: 1.4, margin: "0 0 2px" }}>
+                    <span style={{ fontWeight: 500 }}>{item.user}</span>{" "}
+                    <span style={{ color: "#7A7A7A" }}>{item.action}</span>{" "}
+                    <span style={{ color: "#5A5A5A" }}>{item.file}</span>
                   </p>
-                  <p className="text-[11px] text-warm-gray-400 mt-0.5">{item.time}</p>
+                  <p style={{ fontSize: 11, color: "#B0B0B0", margin: 0 }}>{item.time}</p>
                 </div>
               </div>
             ))}
@@ -217,41 +138,34 @@ export default function HomePage() {
 
       {/* Recent Files */}
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.3 }}
-        className="bg-white rounded-2xl border border-warm-gray-200 shadow-sm p-5 mb-8"
+        initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32, duration: 0.28 }}
+        style={{ background: "white", border: "1px solid #EAEAE8", borderRadius: 16, padding: "20px 22px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
       >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="font-semibold text-sm text-warm-gray-800">Recent Files</h2>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+          <h2 style={{ fontSize: 14, fontWeight: 500, color: "#1A1A1A", margin: 0 }}>Recent Files</h2>
           <button
             onClick={() => navigate("/docs")}
-            className="flex items-center gap-1 text-xs text-warm-gray-400 hover:text-warm-gray-700 transition-colors"
+            style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "#B0B0B0", background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: FONT }}
           >
-            View all <ArrowRight size={12} />
+            View all <ArrowRight size={11} />
           </button>
         </div>
-        <div className="space-y-2">
+        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
           {recentFiles.slice(0, 5).map((file) => (
             <div
               key={file.id}
-              className="flex items-center gap-3 py-2 px-3 rounded-[13px] hover:bg-warm-gray-50 transition-colors cursor-pointer group"
+              style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 10px", borderRadius: 10, cursor: "pointer", transition: "background 0.12s" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#F8F8F7"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}
             >
-              <div className="w-8 h-8 rounded-[10px] bg-warm-gray-100 flex items-center justify-center shrink-0">
-                <FileText size={14} className="text-warm-gray-500" />
+              <div style={{ width: 30, height: 30, borderRadius: 8, background: "#F4F4F2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <FileText size={13} style={{ color: "#8A8A8A" }} />
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-[13px] font-medium text-warm-gray-800 truncate">
-                  {file.filename}
-                </p>
-                <p className="text-[11px] text-warm-gray-400">
-                  {file.sharedBy} · {file.size}
-                </p>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <p style={{ fontSize: 13, fontWeight: 500, color: "#1A1A1A", margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{file.filename}</p>
+                <p style={{ fontSize: 11, color: "#B0B0B0", margin: 0 }}>{file.sharedBy} · {file.size}</p>
               </div>
-              <span className="text-[11px] text-warm-gray-400 shrink-0 hidden sm:block">
-                {file.createdTime.split("•")[0].trim()}
-              </span>
-              <span className="text-[10px] font-semibold text-warm-gray-400 bg-warm-gray-100 px-2 py-0.5 rounded-full shrink-0">
+              <span style={{ fontSize: 10, fontWeight: 600, color: "#8A8A8A", background: "#F4F4F2", padding: "2px 8px", borderRadius: 999, flexShrink: 0 }}>
                 {file.type}
               </span>
             </div>
@@ -259,14 +173,6 @@ export default function HomePage() {
         </div>
       </motion.div>
 
-      {/* Engagement Chart */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.45, duration: 0.3 }}
-      >
-        <EngagementChart />
-      </motion.div>
     </div>
   );
 }
