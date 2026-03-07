@@ -535,16 +535,23 @@ export default function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onClo
               animate={{ x: 0 }}
               exit={{ x: -280 }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="fixed left-0 top-0 h-screen w-[264px] bg-[#F6F6F4] border-r border-[#E8E8E6] z-50 lg:hidden"
+              className="fixed left-0 top-0 h-screen w-[264px] bg-[#F6F6F4] border-r border-[#E8E8E6] z-50 lg:hidden flex flex-col"
             >
-              <button
-                onClick={onClose}
-                className="absolute top-4 right-4 p-1 rounded-lg hover:bg-[#E8E8E6] text-[#9A9A9A] z-10"
-                aria-label="Close sidebar"
-              >
-                <X size={18} strokeWidth={1.5} />
-              </button>
-              {sidebarContent}
+              {/* Dedicated close row — own space, above account card */}
+              <div className="flex items-center justify-between px-3 pt-3 pb-1 shrink-0">
+                <span className="text-[11px] font-medium text-[#9A9A9A] uppercase tracking-[0.08em]">Menu</span>
+                <button
+                  onClick={onClose}
+                  className="w-7 h-7 flex items-center justify-center rounded-[10px] hover:bg-[#E8E8E6] text-[#9A9A9A] transition-colors"
+                  aria-label="Close sidebar"
+                >
+                  <X size={15} strokeWidth={1.5} />
+                </button>
+              </div>
+              {/* Sidebar content */}
+              <div className="flex-1 overflow-hidden">
+                {sidebarContent}
+              </div>
             </motion.aside>
           </>
         )}
