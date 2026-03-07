@@ -5,11 +5,16 @@ import Sidebar from "./Sidebar";
 import RightRail from "./RightRail";
 import MobileNav from "./MobileNav";
 import { type FilterState, defaultFilters } from "./FilterPopover";
+import { projects as initialProjects } from "../data/mockData";
+import type { Project } from "../data/mockData";
 
 export default function Layout() {
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false);
   const [railMobileOpen, setRailMobileOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+
+  const addProject = (p: Project) => setProjects((prev) => [...prev, p]);
 
   return (
     <div className="w-full h-full overflow-hidden" style={{ background: '#F6F6F4' }}>
@@ -17,6 +22,8 @@ export default function Layout() {
         collapsed={false}
         mobileOpen={sidebarMobileOpen}
         onClose={() => setSidebarMobileOpen(false)}
+        projects={projects}
+        onAddProject={addProject}
       />
 
       {/* Mobile top bar */}
@@ -31,9 +38,9 @@ export default function Layout() {
         </button>
       </div>
 
-      {/* Main content — full height, internal scroll */}
+      {/* Main content */}
       <main className="h-full lg:ml-[264px] lg:mr-[320px] pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto bg-white">
-        <Outlet context={{ filters, setFilters }} />
+        <Outlet context={{ filters, setFilters, projects, addProject }} />
       </main>
 
       <RightRail
@@ -41,7 +48,6 @@ export default function Layout() {
         onClose={() => setRailMobileOpen(false)}
       />
 
-      {/* Mobile bottom navigation */}
       <MobileNav onMorePress={() => setSidebarMobileOpen(true)} />
     </div>
   );
@@ -50,4 +56,6 @@ export default function Layout() {
 export type LayoutContext = {
   filters: FilterState;
   setFilters: (f: FilterState) => void;
+  projects: Project[];
+  addProject: (p: Project) => void;
 };

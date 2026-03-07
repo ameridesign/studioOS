@@ -2,7 +2,9 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText, Clock } from "lucide-react";
-import { projects, recentFiles } from "../data/mockData";
+import { useOutletContext } from "react-router-dom";
+import type { LayoutContext } from "../components/Layout";
+import { recentFiles } from "../data/mockData";
 
 const FONT =
   'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
@@ -33,6 +35,7 @@ const progresses = [72, 45, 88, 31];
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const { projects } = useOutletContext<LayoutContext>();
   const greeting = useMemo(() => getGreeting(), []);
   const today = useMemo(
     () => new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }),

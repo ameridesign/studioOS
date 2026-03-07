@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -23,11 +23,10 @@ import {
   User,
   LogOut,
   CreditCard,
-  Building2,
-  Layers,
-  Smartphone,
-  Globe,
 } from "lucide-react";
+import NewProjectModal from "./NewProjectModal";
+import { PROJECT_ICON_MAP } from "../lib/projectIcons";
+import type { Project } from "../data/mockData";
 
 const SIDEBAR_FONT =
   'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"';
@@ -42,12 +41,6 @@ const essentialItems = [
   { icon: BarChart3, label: "Reporting", path: "/reporting" },
 ];
 
-const sidebarProjects = [
-  { id: "atlas-crm",        name: "Atlas CRM",         icon: Building2  },
-  { id: "studioos-v2",      name: "Studio OS v2",       icon: Layers     },
-  { id: "mobile-app",       name: "Mobile App",         icon: Smartphone },
-  { id: "website-redesign", name: "Website Redesign",   icon: Globe      },
-];
 
 const supportItems = [
   { icon: Settings, label: "Settings", path: "/settings" },
@@ -60,24 +53,35 @@ const appItems = [
 ];
 
 // All searchable items flattened
-const allSearchItems = [
-  ...essentialItems.map((i) => ({ label: i.label, path: i.path, type: "nav" as const, icon: i.icon })),
-  ...sidebarProjects.map((p) => ({ label: p.name, path: `/projects/${p.id}`, type: "project" as const, icon: p.icon })),
-  ...supportItems.map((i) => ({ label: i.label, path: i.path, type: "nav" as const, icon: i.icon })),
-];
+
 
 interface SidebarProps {
   collapsed: boolean;
   mobileOpen: boolean;
   onClose: () => void;
+  projects: Project[];
+  onAddProject: (p: Project) => void;
 }
 
-export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
+export default function Sidebar({ mobileOpen, onClose, projects, onAddProject }: SidebarProps) {
   const [projectsOpen, setProjectsOpen] = useState(true);
+  const [newProjectOpen, setNewProjectOpen] = useState(false);
   const [managementOpen, setManagementOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
+
+  const allSearchItems = useMemo(() => [
+    ...essentialItems.map((i) => ({ label: i.label, path: i.path, type: "nav" as const, icon: i.icon })),
+    ...projects.map((p) => ({ label: p.name, path: `/projects/${p.id}`, type: "project" as const, icon: PROJECT_ICON_MAP[p.iconKey] ?? PROJECT_ICON_MAP["building2"] })),
+    ...supportItems.map((i) => ({ label: i.label, path: i.path, type: "nav" as const, icon: i.icon })),
+  ], [projects]);
+
+  const searchResults = searchQuery.trim()
+    ? allSearchItems.filter((item) =>
+        item.label.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
   const location = useLocation();
   const navigate = useNavigate();
   const accountRef = useRef<HTMLDivElement>(null);
@@ -87,12 +91,6 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
     if (path === "/") return location.pathname === "/";
     return location.pathname.startsWith(path);
   };
-
-  const searchResults = searchQuery.trim()
-    ? allSearchItems.filter((item) =>
-        item.label.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
 
   // Close account overlay on outside click
   useEffect(() => {
@@ -273,7 +271,7 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
               <span>Projects</span>
             </button>
             <div className="flex items-center gap-1">
-              <button className="w-6 h-6 flex items-center justify-center rounded-lg text-[#9A9A9A] hover:bg-[#E8E8E6] transition-colors" aria-label="Add project">
+              <button onClick={() => setNewProjectOpen(true)} className="w-6 h-6 flex items-center justify-center rounded-lg text-[#9A9A9A] hover:bg-[#E8E8E6] transition-colors" aria-label="Add project">
                 <Plus size={14} strokeWidth={1.5} />
               </button>
               <button className="w-6 h-6 flex items-center justify-center rounded-lg text-[#9A9A9A] hover:bg-[#E8E8E6] transition-colors" aria-label="More options">
@@ -290,22 +288,25 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
                 transition={{ duration: 0.2 }}
                 className="overflow-hidden space-y-[1px]"
               >
-                {sidebarProjects.map((project) => (
-                  <NavLink
-                    key={project.id}
-                    to={`/projects/${project.id}`}
-                    onClick={onClose}
-                    className={`flex items-center gap-[10px] h-[35px] px-[11px] rounded-[11px] text-[13px] transition-all duration-100
-                      ${isActive(`/projects/${project.id}`)
-                        ? "bg-white border border-[#E8E8E6] text-[#2A2A2A] font-medium shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
-                        : "border border-transparent text-[#6F6F6F] hover:bg-white/60 font-normal"
-                      }`}
-                    aria-label={project.name}
-                  >
-                    <project.icon size={13} className="shrink-0 text-[#8A8A8A]" />
-                    <span>{project.name}</span>
-                  </NavLink>
-                ))}
+                {projects.map((project) => {
+                  const ProjIcon = PROJECT_ICON_MAP[project.iconKey] ?? PROJECT_ICON_MAP["building2"];
+                  return (
+                    <NavLink
+                      key={project.id}
+                      to={`/projects/${project.id}`}
+                      onClick={onClose}
+                      className={`flex items-center gap-[10px] h-[35px] px-[11px] rounded-[11px] text-[13px] transition-all duration-100
+                        ${isActive(`/projects/${project.id}`)
+                          ? "bg-white border border-[#E8E8E6] text-[#2A2A2A] font-medium shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+                          : "border border-transparent text-[#6F6F6F] hover:bg-white/60 font-normal"
+                        }`}
+                      aria-label={project.name}
+                    >
+                      <ProjIcon size={13} className="shrink-0 text-[#8A8A8A]" />
+                      <span>{project.name}</span>
+                    </NavLink>
+                  );
+                })}
               </motion.div>
             )}
           </AnimatePresence>
@@ -393,6 +394,7 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
     </div>
   );
 
+
   return (
     <>
       {/* Desktop sidebar */}
@@ -430,6 +432,11 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
           </>
         )}
       </AnimatePresence>
+      <NewProjectModal
+        open={newProjectOpen}
+        onClose={() => setNewProjectOpen(false)}
+        onSubmit={onAddProject}
+      />
     </>
   );
 }

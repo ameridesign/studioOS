@@ -20,6 +20,7 @@ export interface Project {
   id: string;
   name: string;
   color: string;
+  iconKey: string;
 }
 
 export interface ShortcutItem {
@@ -113,10 +114,10 @@ export const recentFiles: FileItem[] = [
 ];
 
 export const projects: Project[] = [
-  { id: "atlas-crm", name: "Atlas CRM", color: "#1a1a1a" },
-  { id: "studioos-v2", name: "Studio OS v2", color: "#f59e0b" },
-  { id: "mobile-app", name: "Mobile App", color: "#10b981" },
-  { id: "website-redesign", name: "Website Redesign", color: "#ec4899" },
+  { id: "atlas-crm",        name: "Atlas CRM",         color: "#1a1a1a", iconKey: "building2"  },
+  { id: "studioos-v2",      name: "Studio OS v2",       color: "#1a1a1a", iconKey: "layers"     },
+  { id: "mobile-app",       name: "Mobile App",         color: "#1a1a1a", iconKey: "smartphone" },
+  { id: "website-redesign", name: "Website Redesign",   color: "#1a1a1a", iconKey: "globe"      },
 ];
 
 export const shortcuts: ShortcutItem[] = [

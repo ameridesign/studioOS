@@ -12,7 +12,9 @@ import {
   Globe,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { projects, docCategories } from "../data/mockData";
+import { docCategories } from "../data/mockData";
+import { useOutletContext } from "react-router-dom";
+import type { LayoutContext } from "../components/Layout";
 
 const FONT =
   'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
@@ -33,6 +35,7 @@ const projectStats = [
 
 export default function ProjectPage() {
   const { projectId } = useParams();
+  const { projects } = useOutletContext<LayoutContext>();
   const project = projects.find((p) => p.id === projectId);
   const ProjectIcon = projectId ? (PROJECT_ICONS[projectId] ?? Building2) : Building2;
 
