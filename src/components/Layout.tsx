@@ -11,15 +11,21 @@ import type { Project } from "../data/mockData";
 export default function Layout() {
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false);
   const [railMobileOpen, setRailMobileOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [railCollapsed, setRailCollapsed] = useState(false);
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [projects, setProjects] = useState<Project[]>(initialProjects);
 
   const addProject = (p: Project) => setProjects((prev) => [...prev, p]);
 
+  const sidebarW = sidebarCollapsed ? 68 : 264;
+  const railW = railCollapsed ? 0 : 320;
+
   return (
     <div className="w-full h-full overflow-hidden" style={{ background: '#F6F6F4' }}>
       <Sidebar
-        collapsed={false}
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed((v) => !v)}
         mobileOpen={sidebarMobileOpen}
         onClose={() => setSidebarMobileOpen(false)}
         projects={projects}
@@ -38,12 +44,21 @@ export default function Layout() {
         </button>
       </div>
 
-      {/* Main content */}
-      <main className="h-full lg:ml-[264px] lg:mr-[320px] pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto bg-white">
+      {/* Main content — margins animate with sidebar/rail */}
+      <main
+        className="h-full pt-14 lg:pt-0 pb-16 lg:pb-0 overflow-y-auto bg-white"
+        style={{
+          marginLeft: `${sidebarW}px`,
+          marginRight: `${railW}px`,
+          transition: "margin 0.25s cubic-bezier(0.4,0,0.2,1)",
+        }}
+      >
         <Outlet context={{ filters, setFilters, projects, addProject }} />
       </main>
 
       <RightRail
+        collapsed={railCollapsed}
+        onToggleCollapse={() => setRailCollapsed((v) => !v)}
         mobileOpen={railMobileOpen}
         onClose={() => setRailMobileOpen(false)}
       />

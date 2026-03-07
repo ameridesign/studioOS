@@ -23,6 +23,8 @@ import {
   User,
   LogOut,
   CreditCard,
+  PanelLeftClose,
+  PanelLeftOpen,
 } from "lucide-react";
 import NewProjectModal from "./NewProjectModal";
 import { PROJECT_ICON_MAP } from "../lib/projectIcons";
@@ -57,13 +59,14 @@ const appItems = [
 
 interface SidebarProps {
   collapsed: boolean;
+  onToggleCollapse: () => void;
   mobileOpen: boolean;
   onClose: () => void;
   projects: Project[];
   onAddProject: (p: Project) => void;
 }
 
-export default function Sidebar({ mobileOpen, onClose, projects, onAddProject }: SidebarProps) {
+export default function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onClose, projects, onAddProject }: SidebarProps) {
   const [projectsOpen, setProjectsOpen] = useState(true);
   const [newProjectOpen, setNewProjectOpen] = useState(false);
   const [managementOpen, setManagementOpen] = useState(false);
@@ -398,8 +401,90 @@ export default function Sidebar({ mobileOpen, onClose, projects, onAddProject }:
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-[264px] bg-[#F6F6F4] border-r border-[#E8E8E6] z-30">
-        {sidebarContent}
+      <aside
+        className="hidden lg:flex flex-col fixed left-0 top-0 h-screen bg-[#F6F6F4] border-r border-[#E8E8E6] z-30 overflow-hidden"
+        style={{
+          width: collapsed ? 68 : 264,
+          transition: "width 0.25s cubic-bezier(0.4,0,0.2,1)",
+        }}
+      >
+        {collapsed ? (
+          /* Icon-only collapsed rail */
+          <div className="flex flex-col items-center gap-1 pt-3 pb-3 h-full" style={{ fontFamily: SIDEBAR_FONT }}>
+            {/* Expand button */}
+            <button
+              onClick={onToggleCollapse}
+              title="Expand sidebar"
+              className="w-10 h-10 flex items-center justify-center rounded-[11px] text-[#9A9A9A] hover:bg-white hover:border hover:border-[#E8E8E6] transition-all mb-1"
+            >
+              <PanelLeftOpen size={17} strokeWidth={1.5} />
+            </button>
+            <div className="w-8 border-t border-[#E8E8E6] mb-1" />
+            {essentialItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                onClick={onClose}
+                title={item.label}
+                className={`w-10 h-10 flex items-center justify-center rounded-[11px] transition-all duration-100
+                  ${isActive(item.path)
+                    ? "bg-white border border-[#E8E8E6] text-[#2A2A2A] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+                    : "border border-transparent text-[#6F6F6F] hover:bg-white/60"
+                  }`}
+              >
+                <item.icon size={18} strokeWidth={1.5} />
+              </NavLink>
+            ))}
+            <div className="w-8 border-t border-[#E8E8E6] my-1" />
+            {projects.map((project) => {
+              const ProjIcon = PROJECT_ICON_MAP[project.iconKey] ?? PROJECT_ICON_MAP["building2"];
+              return (
+                <NavLink
+                  key={project.id}
+                  to={`/projects/${project.id}`}
+                  onClick={onClose}
+                  title={project.name}
+                  className={`w-10 h-10 flex items-center justify-center rounded-[11px] transition-all duration-100
+                    ${isActive(`/projects/${project.id}`)
+                      ? "bg-white border border-[#E8E8E6] text-[#2A2A2A] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+                      : "border border-transparent text-[#6F6F6F] hover:bg-white/60"
+                    }`}
+                >
+                  <ProjIcon size={14} className="shrink-0" />
+                </NavLink>
+              );
+            })}
+            <div className="flex-1" />
+            {supportItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                onClick={onClose}
+                title={item.label}
+                className={`w-10 h-10 flex items-center justify-center rounded-[11px] transition-all duration-100
+                  ${isActive(item.path)
+                    ? "bg-white border border-[#E8E8E6] text-[#2A2A2A] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+                    : "border border-transparent text-[#6F6F6F] hover:bg-white/60"
+                  }`}
+              >
+                <item.icon size={18} strokeWidth={1.5} />
+              </NavLink>
+            ))}
+          </div>
+        ) : (
+          /* Full expanded sidebar */
+          <div className="flex flex-col h-full relative">
+            {/* Collapse toggle — top right corner */}
+            <button
+              onClick={onToggleCollapse}
+              title="Collapse sidebar"
+              className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-[9px] text-[#B0B0B0] hover:text-[#6F6F6F] hover:bg-[#ECEAE7] transition-all"
+            >
+              <PanelLeftClose size={15} strokeWidth={1.5} />
+            </button>
+            {sidebarContent}
+          </div>
+        )}
       </aside>
 
       {/* Mobile overlay */}

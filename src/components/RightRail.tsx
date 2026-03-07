@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Bookmark, Edit3, Trash2, Mail, Power, Share2, Copy } from "lucide-react";
+import { X, Bookmark, Edit3, Trash2, Mail, Power, Share2, Copy, PanelRightClose, PanelRightOpen } from "lucide-react";
 
 const sprintFiles = [
   {
@@ -54,15 +54,17 @@ const toolbarIcons = [
 ];
 
 interface RightRailProps {
+  collapsed: boolean;
+  onToggleCollapse: () => void;
   mobileOpen: boolean;
   onClose: () => void;
 }
 
-export default function RightRail({ mobileOpen, onClose }: RightRailProps) {
+export default function RightRail({ collapsed, onToggleCollapse, mobileOpen, onClose }: RightRailProps) {
   const railContent = (
     <div className="flex flex-col h-full p-4">
       {/* Icon Toolbar */}
-      <div className="flex items-center gap-2 border border-warm-gray-200 rounded-[13px] px-2 py-1.5 w-fit mb-4 shrink-0">
+      <div className="flex items-center gap-2 border border-warm-gray-200 rounded-[13px] px-2 py-1.5 mb-4 shrink-0">
         {toolbarIcons.map((item) => (
           <button
             key={item.label}
@@ -73,6 +75,15 @@ export default function RightRail({ mobileOpen, onClose }: RightRailProps) {
             <item.icon size={14} />
           </button>
         ))}
+        <div className="flex-1" />
+        <button
+          onClick={onToggleCollapse}
+          title="Collapse panel"
+          aria-label="Collapse panel"
+          className="w-[28px] h-[28px] flex items-center justify-center rounded-[10px] text-[#9A9A9A] hover:bg-[#F3F3F3] transition-colors"
+        >
+          <PanelRightClose size={14} />
+        </button>
       </div>
 
       {/* Header */}
@@ -144,10 +155,37 @@ export default function RightRail({ mobileOpen, onClose }: RightRailProps) {
 
   return (
     <>
-      {/* Desktop rail — full-height panel */}
-      <aside className="hidden lg:block fixed right-0 top-0 h-screen w-[320px] bg-white border-l border-[#E8E8E6] z-20 overflow-hidden">
-        {railContent}
+      {/* Desktop rail */}
+      <aside
+        className="hidden lg:block fixed right-0 top-0 h-screen bg-white border-l border-[#E8E8E6] z-20 overflow-hidden"
+        style={{
+          width: collapsed ? 0 : 320,
+          borderLeftWidth: collapsed ? 0 : 1,
+          transition: "width 0.25s cubic-bezier(0.4,0,0.2,1), border-left-width 0.25s",
+        }}
+      >
+        <div style={{ width: 320 }}>
+          {railContent}
+        </div>
       </aside>
+
+      {/* Floating re-open button when right rail is collapsed */}
+      <AnimatePresence>
+        {collapsed && (
+          <motion.button
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 12 }}
+            transition={{ duration: 0.18 }}
+            onClick={onToggleCollapse}
+            title="Open panel"
+            aria-label="Open panel"
+            className="hidden lg:flex fixed right-3 top-3 z-20 w-8 h-8 items-center justify-center rounded-[10px] bg-white border border-[#E8E8E6] text-[#9A9A9A] hover:text-[#4A4A4A] hover:border-[#C0C0BE] shadow-sm transition-colors"
+          >
+            <PanelRightOpen size={15} strokeWidth={1.5} />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Mobile drawer */}
       <AnimatePresence>
