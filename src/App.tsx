@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
 import DocsPage from "./pages/DocsPage";
 import ProjectPage from "./pages/ProjectPage";
 import FilePage from "./pages/FilePage";
@@ -11,7 +12,7 @@ export default function App() {
     <HashRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Navigate to="/docs" replace />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/docs" element={<DocsPage />} />
           <Route path="/projects/:projectId" element={<ProjectPage />} />
           <Route path="/files/:fileId" element={<FilePage />} />
@@ -20,9 +21,10 @@ export default function App() {
           {/* Placeholder routes for sidebar items */}
           <Route path="/tasks" element={<PlaceholderPage title="Tasks" />} />
           <Route path="/calendar" element={<PlaceholderPage title="Calendar" />} />
+          <Route path="/team" element={<PlaceholderPage title="Team" />} />
           <Route path="/automations" element={<PlaceholderPage title="Automations" />} />
           <Route path="/releases" element={<PlaceholderPage title="Releases" />} />
-          <Route path="*" element={<Navigate to="/docs" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </HashRouter>
