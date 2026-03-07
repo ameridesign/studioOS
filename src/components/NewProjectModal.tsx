@@ -49,6 +49,8 @@ export default function NewProjectModal({ open, onClose, onSubmit }: NewProjectM
             style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", backdropFilter: "blur(2px)", WebkitBackdropFilter: "blur(2px)", zIndex: 60 }}
           />
 
+          {/* Centering container — static, no framer transforms */}
+          <div style={{ position: "fixed", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 61, pointerEvents: "none" }}>
           {/* Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 8 }}
@@ -56,12 +58,11 @@ export default function NewProjectModal({ open, onClose, onSubmit }: NewProjectM
             exit={{ opacity: 0, scale: 0.96, y: 8 }}
             transition={{ type: "spring", damping: 30, stiffness: 380 }}
             style={{
-              position: "fixed", top: "50%", left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "calc(100% - 32px)", maxWidth: 400,
+              pointerEvents: "auto",
+              width: "calc(100vw - 32px)", maxWidth: 400,
               background: "white", borderRadius: 20, border: "1px solid #E8E8E6",
               boxShadow: "0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)",
-              zIndex: 61, fontFamily: FONT,
+              fontFamily: FONT,
               display: "flex", flexDirection: "column",
               maxHeight: "min(560px, 90vh)",
             }}
@@ -151,6 +152,7 @@ export default function NewProjectModal({ open, onClose, onSubmit }: NewProjectM
               </button>
             </div>
           </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>
