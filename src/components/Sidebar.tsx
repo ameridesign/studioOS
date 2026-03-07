@@ -216,7 +216,7 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
                     {item.type === "project" ? (
                       <span
                         className="w-3 h-3 rounded-[3px] shrink-0"
-                        style={{ backgroundColor: (item as typeof sidebarProjects[0] & { path: string; type: "project" }).color }}
+                        style={{ backgroundColor: (item as { color: string }).color }}
                       />
                     ) : (
                       <item.icon size={14} strokeWidth={1.5} className="text-[#9A9A9A] shrink-0" />

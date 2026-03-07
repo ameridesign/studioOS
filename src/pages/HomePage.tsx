@@ -11,7 +11,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { projects, recentFiles, docCategories } from "../data/mockData";
+import { projects, recentFiles } from "../data/mockData";
 import EngagementChart from "../components/EngagementChart";
 
 function getGreeting() {
