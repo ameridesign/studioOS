@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAppearance, type Theme, type Density, type FontSize } from "../contexts/AppearanceContext";
 
 const FONT =
   'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
@@ -376,42 +377,60 @@ function NotificationsPanel() {
 }
 
 function AppearancePanel() {
-  const [theme, setTheme] = useState("Light");
-  const [density, setDensity] = useState("Default");
-  const [fontSize, setFontSize] = useState("Default");
+  const { theme, density, fontSize, setTheme, setDensity, setFontSize } = useAppearance();
+
+  const densityHint: Record<Density, string> = {
+    Compact:     "Tighter spacing — more content visible at once.",
+    Default:     "Balanced spacing for everyday use.",
+    Comfortable: "Generous spacing for focused, relaxed reading.",
+  };
+
+  const fontHint: Record<FontSize, string> = {
+    Small:   "88 % scale — fits more on screen.",
+    Default: "100 % scale — the default Studio OS size.",
+    Large:   "113 % scale — easier on the eyes.",
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-      <PanelHeader title="Appearance" description="Customize how Studio OS looks for you." />
+      <PanelHeader title="Appearance" description="Changes apply instantly across the whole app." />
 
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <SectionLabel>Theme</SectionLabel>
-          <SegmentedControl options={["Light", "Dark", "System"]} value={theme} onChange={setTheme} />
-        </div>
-
-        <Divider />
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <SectionLabel>Interface density</SectionLabel>
-          <SegmentedControl options={["Compact", "Default", "Comfortable"]} value={density} onChange={setDensity} />
+          <SegmentedControl
+            options={["Light", "Dark", "System"]}
+            value={theme}
+            onChange={(v) => setTheme(v as Theme)}
+          />
           <p style={{ fontSize: 12, color: "#A0A0A0", margin: 0 }}>
-            {density === "Compact" && "Tighter spacing for more content on screen."}
-            {density === "Default" && "Balanced spacing for everyday use."}
-            {density === "Comfortable" && "Generous spacing for focused work."}
+            {theme === "System" ? "Follows your operating system setting." : `${theme} mode is active.`}
           </p>
         </div>
 
         <Divider />
 
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <SectionLabel>Font size</SectionLabel>
-          <SegmentedControl options={["Small", "Default", "Large"]} value={fontSize} onChange={setFontSize} />
+          <SectionLabel>Interface density</SectionLabel>
+          <SegmentedControl
+            options={["Compact", "Default", "Comfortable"]}
+            value={density}
+            onChange={(v) => setDensity(v as Density)}
+          />
+          <p style={{ fontSize: 12, color: "#A0A0A0", margin: 0 }}>{densityHint[density]}</p>
         </div>
-      </div>
 
-      <div style={{ paddingTop: 4 }}>
-        <SaveButton label="Apply" />
+        <Divider />
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <SectionLabel>Font size</SectionLabel>
+          <SegmentedControl
+            options={["Small", "Default", "Large"]}
+            value={fontSize}
+            onChange={(v) => setFontSize(v as FontSize)}
+          />
+          <p style={{ fontSize: 12, color: "#A0A0A0", margin: 0 }}>{fontHint[fontSize]}</p>
+        </div>
       </div>
     </div>
   );

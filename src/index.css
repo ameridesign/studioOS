@@ -39,6 +39,26 @@
   }
 }
 
+/* ── Dark mode ───────────────────────────────────────────────────────────── */
+/* Monochrome inversion: grays/whites flip cleanly, no hue distortion        */
+html[data-theme="dark"] {
+  filter: invert(1) hue-rotate(180deg);
+  background: #000;
+}
+
+/* Re-invert embedded media so images look correct in dark mode */
+html[data-theme="dark"] img,
+html[data-theme="dark"] video,
+html[data-theme="dark"] canvas,
+html[data-theme="dark"] [data-no-invert] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* ── Density scale (controlled via JS custom property) ───────────────────── */
+:root {
+  --density-scale: 1;
+}
+
 :focus-visible {
   outline: 2px solid #C0C0BE;
   outline-offset: 2px;
