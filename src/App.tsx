@@ -9,6 +9,8 @@ import SettingsPage from "./pages/SettingsPage";
 import TasksPage from "./pages/TasksPage";
 import CalendarPage from "./pages/CalendarPage";
 import TeamPage from "./pages/TeamPage";
+import AutomationsPage from "./pages/AutomationsPage";
+import ReleasesPage from "./pages/ReleasesPage";
 
 export default function App() {
   return (
@@ -25,8 +27,8 @@ export default function App() {
           <Route path="/tasks" element={<TasksPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/team" element={<TeamPage />} />
-          <Route path="/automations" element={<PlaceholderPage title="Automations" />} />
-          <Route path="/releases" element={<PlaceholderPage title="Releases" />} />
+          <Route path="/automations" element={<AutomationsPage />} />
+          <Route path="/releases" element={<ReleasesPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
@@ -34,14 +36,3 @@ export default function App() {
   );
 }
 
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <div className="p-6 lg:p-8">
-      <p className="text-xs font-medium text-warm-gray-400 uppercase tracking-wider mb-1">{title}</p>
-      <h1 className="text-2xl font-bold text-warm-gray-900 mb-4">{title}</h1>
-      <div className="bg-white rounded-2xl border border-warm-gray-200 p-8 text-center">
-        <p className="text-warm-gray-500 text-sm">This page is under construction.</p>
-      </div>
-    </div>
-  );
-}
