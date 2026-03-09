@@ -205,38 +205,38 @@ export default function CalendarPage() {
           <div style={{
             display: "flex", alignItems: "center",
             background: "white", border: "1px solid #E8E8E6",
-            borderRadius: 15, height: 44, overflow: "hidden",
+            borderRadius: 12, height: 36, overflow: "hidden",
           }}>
             <button
               onClick={prevMonth}
               aria-label="Previous month"
-              style={{ width: 38, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", borderRight: "1px solid #F0F0EE", cursor: "pointer", color: "#6A6A6A" }}
+              style={{ width: 32, height: 36, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", borderRight: "1px solid #F0F0EE", cursor: "pointer", color: "#6A6A6A" }}
             >
-              <ChevronLeft size={15} strokeWidth={1.5} />
+              <ChevronLeft size={14} strokeWidth={1.5} />
             </button>
-            <span style={{ fontSize: 13, fontWeight: 500, color: "#1A1A1A", padding: "0 14px", whiteSpace: "nowrap", minWidth: 124, textAlign: "center" }}>
+            <span style={{ fontSize: 13, fontWeight: 500, color: "#1A1A1A", padding: "0 12px", whiteSpace: "nowrap", minWidth: 112, textAlign: "center" }}>
               {MONTH_NAMES[month]} {year}
             </span>
             <button
               onClick={nextMonth}
               aria-label="Next month"
-              style={{ width: 38, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", borderLeft: "1px solid #F0F0EE", cursor: "pointer", color: "#6A6A6A" }}
+              style={{ width: 32, height: 36, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", borderLeft: "1px solid #F0F0EE", cursor: "pointer", color: "#6A6A6A" }}
             >
-              <ChevronRight size={15} strokeWidth={1.5} />
+              <ChevronRight size={14} strokeWidth={1.5} />
             </button>
           </div>
 
           {/* Filter */}
           <button
             style={{
-              height: 44, padding: "0 16px",
+              height: 36, padding: "0 12px",
               background: "white", border: "1px solid #E8E8E6",
-              borderRadius: 15, display: "flex", alignItems: "center",
-              gap: 7, cursor: "pointer", fontSize: 13, fontWeight: 500,
+              borderRadius: 12, display: "flex", alignItems: "center",
+              gap: 6, cursor: "pointer", fontSize: 13, fontWeight: 500,
               color: "#6A6A6A", fontFamily: FONT,
             }}
           >
-            <Filter size={14} style={{ color: "#A0A0A0" }} />
+            <Filter size={13} style={{ color: "#A0A0A0" }} />
             Filter
           </button>
 
@@ -244,14 +244,14 @@ export default function CalendarPage() {
           <div style={{
             display: "flex",
             background: "white", border: "1px solid #E8E8E6",
-            borderRadius: 15, height: 44, overflow: "hidden",
+            borderRadius: 12, height: 36, overflow: "hidden",
           }}>
             {(["month", "week"] as const).map((v, i) => (
               <button
                 key={v}
                 onClick={() => setViewMode(v)}
                 style={{
-                  height: 44, padding: "0 16px",
+                  height: 36, padding: "0 14px",
                   background: viewMode === v ? "#F4F4F2" : "white",
                   border: "none",
                   borderRight: i === 0 ? "1px solid #F0F0EE" : "none",
@@ -271,15 +271,15 @@ export default function CalendarPage() {
           {/* Add Event */}
           <button
             style={{
-              height: 44, padding: "0 18px",
+              height: 36, padding: "0 14px",
               background: "#1A1A1A", border: "none",
-              borderRadius: 15, display: "flex", alignItems: "center",
+              borderRadius: 12, display: "flex", alignItems: "center",
               gap: 8, cursor: "pointer",
-              fontSize: 13, fontWeight: 500, color: "white",
+              fontSize: 13, fontWeight: 600, color: "white",
               fontFamily: FONT, whiteSpace: "nowrap",
             }}
           >
-            <Plus size={15} strokeWidth={2} />
+            <Plus size={14} strokeWidth={2.5} />
             Add Event
           </button>
         </div>

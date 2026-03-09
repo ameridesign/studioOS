@@ -109,9 +109,9 @@ export default function ReportingPage() {
           {/* Date range */}
           {[`${_date}`, "Filter"].map((label) => (
             <button key={label} style={{
-              height: 44, padding: "0 16px",
+              height: 36, padding: "0 12px",
               background: "white", border: "1px solid #E8E8E6",
-              borderRadius: 15, display: "flex", alignItems: "center",
+              borderRadius: 12, display: "flex", alignItems: "center",
               gap: 8, cursor: "pointer",
               fontSize: 13, fontWeight: 500, color: "#3A3A3A",
               fontFamily: FONT, whiteSpace: "nowrap",
@@ -122,14 +122,14 @@ export default function ReportingPage() {
           ))}
           {/* Export */}
           <button style={{
-            height: 44, padding: "0 18px",
+            height: 36, padding: "0 14px",
             background: "#1A1A1A", border: "none",
-            borderRadius: 15, display: "flex", alignItems: "center",
+            borderRadius: 12, display: "flex", alignItems: "center",
             gap: 8, cursor: "pointer",
-            fontSize: 13, fontWeight: 500, color: "white",
+            fontSize: 13, fontWeight: 600, color: "white",
             fontFamily: FONT, whiteSpace: "nowrap",
           }}>
-            <Download size={14} strokeWidth={2} />
+            <Download size={14} strokeWidth={2.5} />
             Export
           </button>
         </div>

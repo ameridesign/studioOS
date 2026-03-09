@@ -166,18 +166,18 @@ export default function DocsPage() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 10,
-              flex: "1 1 200px",
+              gap: 8,
+              flex: "1 1 160px",
               minWidth: 0,
-              height: 44,
+              height: 36,
               background: "white",
               border: "1px solid #E8E8E6",
-              borderRadius: 15,
-              padding: "0 14px",
+              borderRadius: 12,
+              padding: "0 12px",
               boxSizing: "border-box",
             }}
           >
-            <Search size={16} style={{ color: "#B0B0B0", flexShrink: 0 }} />
+            <Search size={14} style={{ color: "#B0B0B0", flexShrink: 0 }} />
             <input
               type="text"
               placeholder="Search"
@@ -188,17 +188,17 @@ export default function DocsPage() {
                 background: "transparent",
                 outline: "none",
                 border: "none",
-                fontSize: 14,
+                fontSize: 13,
                 color: "#1A1A1A",
                 fontFamily: FONT,
               }}
             />
             <span style={{ fontSize: 11, color: "#C0C0C0", flexShrink: 0, letterSpacing: "0.04em" }}>
-              ⌘ F
+              ⌘F
             </span>
           </div>
 
-          {/* Filter — uses FilterPopover (trigger button restyled inside that component) */}
+          {/* Filter — uses FilterPopover */}
           <FilterPopover
             filters={filters}
             onApply={setFilters}
@@ -209,11 +209,11 @@ export default function DocsPage() {
           <button
             onClick={() => setGridView(true)}
             style={{
-              width: 44,
-              height: 44,
+              width: 36,
+              height: 36,
               background: "white",
-              border: gridView ? "1.5px solid #C0C0BE" : "1px solid #E8E8E6",
-              borderRadius: 15,
+              border: gridView ? "1.5px solid #B0B0AE" : "1px solid #E8E8E6",
+              borderRadius: 12,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -222,18 +222,18 @@ export default function DocsPage() {
             }}
             aria-label="Grid view"
           >
-            <LayoutGrid size={17} />
+            <LayoutGrid size={15} />
           </button>
 
           {/* List */}
           <button
             onClick={() => setGridView(false)}
             style={{
-              width: 44,
-              height: 44,
+              width: 36,
+              height: 36,
               background: "white",
-              border: !gridView ? "1.5px solid #C0C0BE" : "1px solid #E8E8E6",
-              borderRadius: 15,
+              border: !gridView ? "1.5px solid #B0B0AE" : "1px solid #E8E8E6",
+              borderRadius: 12,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -242,7 +242,7 @@ export default function DocsPage() {
             }}
             aria-label="List view"
           >
-            <List size={17} />
+            <List size={15} />
           </button>
         </div>
       </div>

@@ -70,7 +70,7 @@ export default function RightRail({ collapsed, onToggleCollapse, mobileOpen, onC
             key={item.label}
             title={item.label}
             aria-label={item.label}
-            className="w-[28px] h-[28px] flex items-center justify-center rounded-[10px] text-[#6B6B6B] hover:bg-[#F3F3F3] transition-colors"
+            className="w-[32px] h-[32px] flex items-center justify-center rounded-[10px] text-[#6B6B6B] hover:bg-[#F3F3F3] transition-colors"
           >
             <item.icon size={14} />
           </button>
@@ -80,7 +80,7 @@ export default function RightRail({ collapsed, onToggleCollapse, mobileOpen, onC
           onClick={onToggleCollapse}
           title="Collapse panel"
           aria-label="Collapse panel"
-          className="w-[28px] h-[28px] flex items-center justify-center rounded-[10px] text-[#9A9A9A] hover:bg-[#F3F3F3] transition-colors"
+          className="w-[32px] h-[32px] flex items-center justify-center rounded-[10px] text-[#9A9A9A] hover:bg-[#F3F3F3] transition-colors"
         >
           <PanelRightClose size={14} />
         </button>
@@ -164,7 +164,7 @@ export default function RightRail({ collapsed, onToggleCollapse, mobileOpen, onC
           transition: "width 0.25s cubic-bezier(0.4,0,0.2,1), border-left-width 0.25s",
         }}
       >
-        <div style={{ width: 320 }}>
+        <div style={{ width: 320, height: "100%" }}>
           {railContent}
         </div>
       </aside>

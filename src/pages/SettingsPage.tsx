@@ -57,7 +57,7 @@ function SaveButton({ label = "Save Changes" }: { label?: string }) {
   return (
     <button
       onClick={() => { setSaved(true); setTimeout(() => setSaved(false), 2000); }}
-      style={{ height: 40, padding: "0 20px", background: saved ? "#4A4A4A" : "#1A1A1A", border: "none", borderRadius: 12, color: "white", fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: FONT, transition: "background 0.2s" }}
+      style={{ height: 36, padding: "0 20px", background: saved ? "#4A4A4A" : "#1A1A1A", border: "none", borderRadius: 12, color: "white", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: FONT, transition: "background 0.2s" }}
     >
       {saved ? "Saved" : label}
     </button>
@@ -66,7 +66,7 @@ function SaveButton({ label = "Save Changes" }: { label?: string }) {
 
 function GhostButton({ children, danger }: { children: React.ReactNode; danger?: boolean }) {
   return (
-    <button style={{ height: 38, padding: "0 16px", background: "white", border: `1px solid ${danger ? "#D0D0CE" : "#E8E8E6"}`, borderRadius: 12, color: danger ? "#C05040" : "#3A3A3A", fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: FONT }}>
+    <button style={{ height: 36, padding: "0 16px", background: "white", border: `1px solid ${danger ? "#D0D0CE" : "#E8E8E6"}`, borderRadius: 12, color: danger ? "#C05040" : "#3A3A3A", fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: FONT }}>
       {children}
     </button>
   );
@@ -128,7 +128,7 @@ function VisualTile({
         style={{
           width: "100%", height: previewHeight,
           borderRadius: 8, overflow: "hidden",
-          border: "1px solid #EDEDE B",
+          border: "1px solid #EDEDEB",
           flexShrink: 0,
         }}
       >

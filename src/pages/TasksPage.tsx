@@ -297,12 +297,12 @@ export default function TasksPage() {
         <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
           {/* Search */}
           <div style={{
-            display: "flex", alignItems: "center", gap: 10,
-            flex: "1 1 180px", minWidth: 0, height: 44,
+            display: "flex", alignItems: "center", gap: 8,
+            flex: "1 1 160px", minWidth: 0, height: 36,
             background: "white", border: "1px solid #E8E8E6",
-            borderRadius: 15, padding: "0 14px", boxSizing: "border-box",
+            borderRadius: 12, padding: "0 12px", boxSizing: "border-box",
           }}>
-            <Search size={15} style={{ color: "#B0B0B0", flexShrink: 0 }} />
+            <Search size={14} style={{ color: "#B0B0B0", flexShrink: 0 }} />
             <input
               type="text"
               placeholder="Search tasks…"
@@ -311,7 +311,7 @@ export default function TasksPage() {
               style={{
                 flex: 1, background: "transparent",
                 outline: "none", border: "none",
-                fontSize: 14, color: "#1A1A1A", fontFamily: FONT,
+                fontSize: 13, color: "#1A1A1A", fontFamily: FONT,
               }}
             />
           </div>
@@ -320,42 +320,42 @@ export default function TasksPage() {
           <button
             onClick={() => setListView(true)}
             style={{
-              width: 44, height: 44, background: "white",
-              border: listView ? "1.5px solid #C0C0BE" : "1px solid #E8E8E6",
-              borderRadius: 15, display: "flex", alignItems: "center",
+              width: 36, height: 36, background: "white",
+              border: listView ? "1.5px solid #B0B0AE" : "1px solid #E8E8E6",
+              borderRadius: 12, display: "flex", alignItems: "center",
               justifyContent: "center", cursor: "pointer",
               color: listView ? "#1A1A1A" : "#A0A0A0",
             }}
             aria-label="List view"
           >
-            <LayoutList size={17} />
+            <LayoutList size={15} />
           </button>
           <button
             onClick={() => setListView(false)}
             style={{
-              width: 44, height: 44, background: "white",
-              border: !listView ? "1.5px solid #C0C0BE" : "1px solid #E8E8E6",
-              borderRadius: 15, display: "flex", alignItems: "center",
+              width: 36, height: 36, background: "white",
+              border: !listView ? "1.5px solid #B0B0AE" : "1px solid #E8E8E6",
+              borderRadius: 12, display: "flex", alignItems: "center",
               justifyContent: "center", cursor: "pointer",
               color: !listView ? "#1A1A1A" : "#A0A0A0",
             }}
             aria-label="Board view"
           >
-            <LayoutGrid size={17} />
+            <LayoutGrid size={15} />
           </button>
 
           {/* New task */}
           <button
             style={{
-              height: 44, padding: "0 18px",
+              height: 36, padding: "0 14px",
               background: "#1A1A1A", border: "none",
-              borderRadius: 15, display: "flex", alignItems: "center",
+              borderRadius: 12, display: "flex", alignItems: "center",
               gap: 8, cursor: "pointer",
-              fontSize: 14, fontWeight: 500, color: "white",
+              fontSize: 13, fontWeight: 600, color: "white",
               fontFamily: FONT, whiteSpace: "nowrap",
             }}
           >
-            <Plus size={15} strokeWidth={2} />
+            <Plus size={14} strokeWidth={2.5} />
             New Task
           </button>
         </div>

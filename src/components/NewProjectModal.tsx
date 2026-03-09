@@ -114,7 +114,7 @@ export default function NewProjectModal({ open, onClose, onSubmit }: NewProjectM
                       key={key}
                       onClick={() => setIconKey(key)}
                       style={{
-                        height: 42, borderRadius: 9,
+                        height: 36, borderRadius: 10,
                         border: active ? "1.5px solid #1A1A1A" : "1px solid #E8E8E6",
                         background: active ? "#1A1A1A" : "white",
                         display: "flex", alignItems: "center", justifyContent: "center",

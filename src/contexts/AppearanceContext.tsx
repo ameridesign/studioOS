@@ -48,7 +48,11 @@ function applyTheme(t: Theme) {
 }
 
 function applyFontSize(f: FontSize) {
-  document.documentElement.style.zoom = ZOOM_MAP[f];
+  if (f === "Default") {
+    document.documentElement.style.removeProperty("zoom");
+  } else {
+    document.documentElement.style.zoom = ZOOM_MAP[f];
+  }
 }
 
 function applyDensity(d: Density) {

@@ -201,26 +201,26 @@ export default function AutomationsPage() {
 
           {/* Search */}
           <div style={{
-            display: "flex", alignItems: "center", gap: 10,
-            flex: "1 1 160px", minWidth: 0, height: 44,
+            display: "flex", alignItems: "center", gap: 8,
+            flex: "1 1 160px", minWidth: 0, height: 36,
             background: "white", border: "1px solid #E8E8E6",
-            borderRadius: 15, padding: "0 14px", boxSizing: "border-box",
+            borderRadius: 12, padding: "0 12px", boxSizing: "border-box",
           }}>
             <Search size={15} style={{ color: "#B0B0B0", flexShrink: 0 }} />
             <input
               placeholder="Search automations…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{ flex: 1, background: "transparent", border: "none", outline: "none", fontSize: 14, color: "#1A1A1A", fontFamily: FONT }}
+              style={{ flex: 1, background: "transparent", border: "none", outline: "none", fontSize: 13, color: "#1A1A1A", fontFamily: FONT }}
             />
           </div>
 
           {/* Category filter */}
-          <div style={{ height: 44, background: "white", border: "1px solid #E8E8E6", borderRadius: 15, display: "flex", alignItems: "center" }}>
+          <div style={{ height: 36, background: "white", border: "1px solid #E8E8E6", borderRadius: 12, display: "flex", alignItems: "center" }}>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              style={{ height: 44, padding: "0 32px 0 14px", background: "transparent", border: "none", fontSize: 13, fontWeight: 500, color: "#3A3A3A", fontFamily: FONT, cursor: "pointer", outline: "none", appearance: "none" }}
+              style={{ height: 36, padding: "0 32px 0 12px", background: "transparent", border: "none", fontSize: 13, fontWeight: 500, color: "#3A3A3A", fontFamily: FONT, cursor: "pointer", outline: "none", appearance: "none" }}
             >
               {CATEGORIES.map((c) => <option key={c} value={c}>{c === "All" ? "All Categories" : c}</option>)}
             </select>
@@ -230,10 +230,10 @@ export default function AutomationsPage() {
           <button
             onClick={() => setActiveOnly((v) => !v)}
             style={{
-              height: 44, padding: "0 16px",
+              height: 36, padding: "0 12px",
               background: activeOnly ? "#1A1A1A" : "white",
               border: `1px solid ${activeOnly ? "#1A1A1A" : "#E8E8E6"}`,
-              borderRadius: 15,
+              borderRadius: 12,
               fontSize: 13, fontWeight: 500,
               color: activeOnly ? "white" : "#5A5A5A",
               cursor: "pointer", fontFamily: FONT,
@@ -246,15 +246,15 @@ export default function AutomationsPage() {
           {/* New Automation */}
           <button
             style={{
-              height: 44, padding: "0 18px",
+              height: 36, padding: "0 14px",
               background: "#1A1A1A", border: "none",
-              borderRadius: 15, display: "flex", alignItems: "center",
+              borderRadius: 12, display: "flex", alignItems: "center",
               gap: 8, cursor: "pointer",
-              fontSize: 13, fontWeight: 500, color: "white",
+              fontSize: 13, fontWeight: 600, color: "white",
               fontFamily: FONT, whiteSpace: "nowrap",
             }}
           >
-            <Plus size={15} strokeWidth={2} />
+            <Plus size={14} strokeWidth={2.5} />
             New Automation
           </button>
         </div>

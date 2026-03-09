@@ -250,10 +250,10 @@ export default function TeamPage() {
 
           {/* Search */}
           <div style={{
-            display: "flex", alignItems: "center", gap: 10,
-            flex: "1 1 180px", minWidth: 0, height: 44,
+            display: "flex", alignItems: "center", gap: 8,
+            flex: "1 1 180px", minWidth: 0, height: 36,
             background: "white", border: "1px solid #E8E8E6",
-            borderRadius: 15, padding: "0 14px", boxSizing: "border-box",
+            borderRadius: 12, padding: "0 12px", boxSizing: "border-box",
           }}>
             <Search size={15} style={{ color: "#B0B0B0", flexShrink: 0 }} />
             <input
@@ -264,23 +264,23 @@ export default function TeamPage() {
               style={{
                 flex: 1, background: "transparent",
                 outline: "none", border: "none",
-                fontSize: 14, color: "#1A1A1A", fontFamily: FONT,
+                fontSize: 13, color: "#1A1A1A", fontFamily: FONT,
               }}
             />
           </div>
 
           {/* Role filter */}
           <div style={{
-            height: 44,
+            height: 36,
             background: "white", border: "1px solid #E8E8E6",
-            borderRadius: 15, overflow: "hidden",
+            borderRadius: 12, overflow: "hidden",
             display: "flex", alignItems: "center",
           }}>
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
               style={{
-                height: 44, padding: "0 14px",
+                height: 36, padding: "0 12px",
                 background: "transparent", border: "none",
                 fontSize: 13, fontWeight: 500, color: "#3A3A3A",
                 fontFamily: FONT, cursor: "pointer",
@@ -297,15 +297,15 @@ export default function TeamPage() {
           {/* Invite */}
           <button
             style={{
-              height: 44, padding: "0 18px",
+              height: 36, padding: "0 14px",
               background: "#1A1A1A", border: "none",
-              borderRadius: 15, display: "flex", alignItems: "center",
+              borderRadius: 12, display: "flex", alignItems: "center",
               gap: 8, cursor: "pointer",
-              fontSize: 13, fontWeight: 500, color: "white",
+              fontSize: 13, fontWeight: 600, color: "white",
               fontFamily: FONT, whiteSpace: "nowrap",
             }}
           >
-            <UserPlus size={15} strokeWidth={1.5} />
+            <UserPlus size={14} strokeWidth={2} />
             Invite
           </button>
         </div>

@@ -70,13 +70,13 @@ export default function FilePage() {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1A1A1A] text-white text-sm font-medium hover:bg-[#2A2A2A] transition-colors">
+          <button className="flex items-center gap-2 h-[36px] px-[14px] rounded-xl bg-[#1A1A1A] text-white text-[13px] font-semibold hover:bg-[#2A2A2A] transition-colors">
             <ExternalLink size={14} /> Open File
           </button>
-          <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-warm-gray-200 text-sm text-warm-gray-600 hover:bg-warm-gray-100 transition-colors">
+          <button className="flex items-center gap-2 h-[36px] px-[12px] rounded-xl border border-warm-gray-200 text-[13px] font-medium text-warm-gray-600 hover:bg-warm-gray-100 transition-colors">
             <Download size={14} /> Download
           </button>
-          <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-warm-gray-200 text-sm text-warm-gray-600 hover:bg-warm-gray-100 transition-colors">
+          <button className="flex items-center gap-2 h-[36px] px-[12px] rounded-xl border border-warm-gray-200 text-[13px] font-medium text-warm-gray-600 hover:bg-warm-gray-100 transition-colors">
             <Share2 size={14} /> Share
           </button>
         </div>

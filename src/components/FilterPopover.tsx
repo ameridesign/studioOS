@@ -42,22 +42,22 @@ export default function FilterPopover({ filters, onApply, onReset }: FilterPopov
       <button
         onClick={() => setOpen(!open)}
         style={{
-          height: 44,
-          padding: "0 16px",
+          height: 36,
+          padding: "0 12px",
           background: "white",
-          border: hasActive ? "1.5px solid #C0C0BE" : "1px solid #E8E8E6",
-          borderRadius: 15,
+          border: hasActive ? "1.5px solid #B0B0AE" : "1px solid #E8E8E6",
+          borderRadius: 12,
           display: "flex",
           alignItems: "center",
-          gap: 8,
+          gap: 6,
           cursor: "pointer",
-          fontSize: 14,
+          fontSize: 13,
           fontWeight: 500,
           color: "#3A3A3A",
         }}
         aria-label="Filter"
       >
-        <Filter size={15} style={{ color: hasActive ? "#1A1A1A" : "#A0A0A0" }} />
+        <Filter size={13} style={{ color: hasActive ? "#1A1A1A" : "#A0A0A0" }} />
         Filter
       </button>
 
